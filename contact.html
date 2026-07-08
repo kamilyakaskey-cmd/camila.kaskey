@@ -163,6 +163,13 @@ p.attribution{ text-align:center; font-style: italic; font-size: 0.9rem; color: 
 .portfolio-item .inline-photo{ aspect-ratio: 16/9; }
 
 /* ---------- Resume ---------- */
+/* ---------- Contact form ---------- */
+form.contact-form{ max-width: 460px; margin: 0 auto; display:flex; flex-direction:column; gap: 16px; }
+form.contact-form label{ font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; display:block; }
+form.contact-form input, form.contact-form textarea{
+  width:100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 0;
+  font-family: var(--sans); font-size: 0.95rem; color: var(--ink); background: #fff;
+}
 form.contact-form input:focus, form.contact-form textarea:focus{ outline: 1px solid var(--ink); }
 form.contact-form textarea{ min-height: 120px; resize: vertical; }
 form.contact-form .submit-link{
@@ -170,9 +177,13 @@ form.contact-form .submit-link{
   font-size: 0.85rem; border: 1px solid var(--ink); padding: 11px 26px; text-decoration:none;
 }
 form.contact-form .submit-link:hover{ background: var(--ink); color:#fff; }
-.contact-info-list{ list-style:none; text-align:center; }
-.contact-info-list li{ margin-bottom: 10px; font-size: 0.95rem; }
-.contact-info-list .label{ display:block; font-size: 0.72rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--ink-soft); margin-bottom: 2px; }
+.contact-grid{ display:grid; grid-template-columns: 1fr 1.2fr; gap: 56px; margin-top: 50px !important; align-items: start; }
+.contact-grid h3{ margin-top:0 !important; text-align:left; }
+.contact-info-list{ list-style:none; }
+.contact-info-list li{ margin-bottom: 18px; font-size: 0.95rem; }
+.contact-info-list .label{ display:block; font-size: 0.72rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--ink-soft); margin-bottom: 3px; }
+.contact-grid form.contact-form{ margin: 0; max-width: none; }
+@media (max-width: 700px){ .contact-grid{ grid-template-columns: 1fr; gap: 40px; } }
 
 /* ---------- Footer ---------- */
 footer{ border-top: 1px solid var(--line); padding: 34px 0; }
@@ -211,30 +222,39 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 
 <main>
   <div class="wrap">
-    <h2>Contact me directly &gt;</h2>
+    <h1>Let's Build Something Together</h1>
+    <p class="lede">Open to internships and project collaborations in mechanical design, testing, and mechatronics.</p>
 
-    <form class="contact-form reveal" onsubmit="return false;">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name">
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3>Contact Info</h3>
+        <ul class="contact-info-list">
+          <li><span class="label">Email</span><a href="mailto:kamilyak@buffalo.edu">kamilyak@buffalo.edu</a></li>
+          <li><span class="label">Phone</span><a href="tel:+17165241101">(716) 524-1101</a></li>
+          <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/camila-kaskey-653ba1385" target="_blank" rel="noopener">linkedin.com/in/camila-kaskey-653ba1385</a></li>
+          <li><span class="label">Location</span>Buffalo, NY</li>
+        </ul>
       </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="your.email@example.com">
-      </div>
-      <div>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Say hello..."></textarea>
-      </div>
-      <a class="submit-link" href="mailto:kamilyak@buffalo.edu">Send</a>
-    </form>
 
-    <ul class="contact-info-list reveal">
-      <li><span class="label">Email</span><a href="mailto:kamilyak@buffalo.edu">kamilyak@buffalo.edu</a></li>
-      <li><span class="label">Phone</span><a href="tel:+17165241101">(716) 524-1101</a></li>
-      <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/camila-kaskey-653ba1385" target="_blank" rel="noopener">linkedin.com/in/camila-kaskey-653ba1385</a></li>
-      <li><span class="label">Location</span>Buffalo, NY</li>
-    </ul>
+      <div class="reveal">
+        <h3>Send a Message</h3>
+        <form class="contact-form" onsubmit="return false;">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com">
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Say hello..."></textarea>
+          </div>
+          <a class="submit-link" href="mailto:kamilyak@buffalo.edu" style="align-self:flex-start;">Send</a>
+        </form>
+      </div>
+    </div>
   </div>
 </main>
 
