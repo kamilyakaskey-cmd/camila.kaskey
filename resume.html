@@ -10,13 +10,12 @@
 :root{
   --bg: #FFFFFF;
   --ink: #222222;
-  --ink-soft: #666666;
   --line: #E4E4E2;
+  --accent: #3A5A50;
   --serif: 'Lora', serif;
   --sans: 'Inter', sans-serif;
   --display: 'Anton', sans-serif;
 }
-
 *{ box-sizing: border-box; margin:0; padding:0; }
 html{ scroll-behavior: smooth; }
 body{
@@ -35,158 +34,63 @@ a:hover{ text-decoration-color: var(--ink); }
 img{ max-width:100%; display:block; }
 .wrap{ max-width: 760px; margin:0 auto; padding: 0 28px; }
 em, i, .italic{ font-style: italic; }
-
-/* ---------- Top nav (plain, subpages) ---------- */
 .topbar{ padding: 26px 0 20px; text-align:center; border-bottom: 1px solid var(--line); }
 .brand{
   font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.02em;
-  text-decoration:none; display:block; margin-bottom: 16px;
+  text-decoration:none; display:block; margin-bottom: 16px; color: var(--ink);
 }
 nav.main-nav{ display:flex; gap: 26px; justify-content:center; flex-wrap: wrap; margin-bottom: 14px; }
 nav.main-nav a{
   font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em;
-  text-decoration:none; color: var(--ink-soft); padding-bottom: 3px;
-  border-bottom: 1px solid transparent; transition: color .15s ease, border-color .15s ease;
+  text-decoration:none; color: var(--ink); padding-bottom: 3px;
+  border-bottom: 1px solid transparent; transition: border-color .15s ease;
 }
-nav.main-nav a:hover, nav.main-nav a.active{ color: var(--ink); border-color: var(--ink); }
-
+nav.main-nav a:hover, nav.main-nav a.active{ border-color: var(--ink); }
 .social-icons{ display:flex; gap: 16px; justify-content:center; }
-.social-icons a{ color: var(--ink-soft); text-decoration:none; }
-.social-icons a:hover{ color: var(--ink); }
+.social-icons a{ color: var(--ink); text-decoration:none; }
 .social-icons svg{ width: 16px; height: 16px; }
-
-/* ---------- Full-bleed dark hero (home page only) ---------- */
-.hero-full{
-  min-height: 100vh;
-  background:
-    linear-gradient(180deg, rgba(8,10,12,0.55) 0%, rgba(8,10,12,0.35) 35%, rgba(8,10,12,0.75) 100%),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 64px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 64px),
-    radial-gradient(ellipse at 50% 100%, #2b3542 0%, #12161c 55%, #05070a 100%);
-  color: #fff;
-  display:flex; flex-direction: column;
-  position: relative;
-}
-.hero-nav{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 26px 40px; flex-wrap: wrap; gap: 16px;
-}
-.hero-brand{
-  font-family: var(--display); font-size: 1.05rem; letter-spacing: 0.03em;
-  color: #fff; text-decoration:none; text-transform: uppercase;
-}
-.hero-nav-links{ display:flex; gap: 34px; flex-wrap: wrap; }
-.hero-nav-links a{
-  font-family: var(--serif); font-size: 1rem; color: rgba(255,255,255,0.82);
-  text-decoration:none; padding-bottom: 4px; border-bottom: 1px solid transparent;
-  transition: color .15s ease, border-color .15s ease;
-}
-.hero-nav-links a:hover, .hero-nav-links a.active{ color:#fff; border-color: #fff; }
-.hero-social{ display:flex; gap: 16px; }
-.hero-social a{ color: rgba(255,255,255,0.82); text-decoration:none; }
-.hero-social a:hover{ color:#fff; }
-.hero-social svg{ width: 17px; height: 17px; }
-
-.hero-photo-note{
-  position: absolute; bottom: 18px; right: 24px;
-  font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
-
-.hero-center{
-  flex: 1; display:flex; flex-direction: column; align-items:center; justify-content: flex-end;
-  text-align:center; padding: 40px 24px 90px;
-}
-.hero-headline{
-  font-family: var(--display); font-weight: 400; text-transform: uppercase;
-  font-size: clamp(2.6rem, 8vw, 5.5rem); line-height: 1.02; letter-spacing: 0.01em;
-}
-.hero-sub{
-  margin-top: 26px; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(255,255,255,0.88);
-  max-width: 46ch; font-family: var(--sans); font-weight: 400;
-}
-
-@media (max-width: 640px){
-  .hero-nav{ flex-direction: column; align-items:center; text-align:center; }
-  .hero-nav-links{ justify-content:center; gap: 18px; }
-}
-
-/* ---------- Resume category labels ---------- */
 .cat-label{
   display:inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
   text-transform: uppercase; letter-spacing: 0.1em; background: #F2F1ED; color: var(--ink);
   padding: 5px 12px; margin-top: 34px;
 }
 .cat-label:first-of-type{ margin-top: 0; }
-
-/* ---------- Hero banner photo ---------- */
-.hero-photo{
-  width:100%; aspect-ratio: 21/9; background: #EFEFEC;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 8px;
-  border-bottom: 1px solid var(--line);
-}
-.hero-photo svg{ width: 30px; height:30px; color: var(--ink-soft); opacity:.45; }
-.hero-photo span{ font-size: 0.8rem; color: var(--ink-soft); }
-
-/* ---------- Page content ---------- */
 main{ padding: 56px 0 90px; }
 main .wrap > * + *{ margin-top: 30px; }
-
 h1{
   font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.6rem);
-  line-height: 1.15; text-align:center;
+  line-height: 1.15; text-align:center; color: var(--ink);
 }
-h2{
-  font-family: var(--serif); font-weight: 400; font-size: 1.5rem; text-align:center;
+p{ color: var(--ink); max-width: 62ch; }
+.resume-actions{ text-align:center; }
+.resume-actions a{
+  display:inline-block; font-size: 0.9rem; font-weight: 500; text-decoration:none;
+  border: 1px solid var(--ink); padding: 10px 24px; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink);
+  transition: background .15s ease, color .15s ease;
 }
-h3{
-  font-family: var(--serif); font-weight: 400; font-size: 1.25rem; margin-top: 40px !important;
-}
-p{ color: var(--ink-soft); max-width: 62ch; }
-p.lede{ font-weight: 500; color: var(--ink); text-align:center; max-width: 56ch; margin: 0 auto; font-size: 1.05rem; }
-p.center{ text-align:center; max-width: 56ch; margin-left:auto; margin-right:auto; }
-p.caption{ font-style: italic; font-size: 0.92rem; text-align:center; color: var(--ink-soft); margin-top: 10px !important; }
-p.quote{ font-style: italic; font-size: 1.15rem; text-align:center; color: var(--ink); max-width: 46ch; margin: 0 auto; }
-p.attribution{ text-align:center; font-style: italic; font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px !important; }
+.resume-actions a:hover{ background: var(--ink); color:#fff; }
 
-.inline-photo{
-  width:100%; aspect-ratio: 16/10; background: #EFEFEC;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+.resume-list{ list-style:none; margin-top: 16px; }
+.resume-list > li{ margin-bottom: 28px; }
+.entry-title{ font-size: 1rem; color: var(--ink); }
+.entry-title em{ font-style: italic; }
+.entry-date{
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; letter-spacing: 0.03em;
+  color: var(--ink); margin-top: 3px;
 }
-.inline-photo.square{ aspect-ratio: 1/1; max-width: 360px; margin: 0 auto; }
-.inline-photo svg{ width: 26px; height:26px; color: var(--ink-soft); opacity:.45; }
-.inline-photo span{ font-size: 0.78rem; color: var(--ink-soft); }
+.bullets{ list-style: disc; margin-top: 10px; padding-left: 20px; }
+.bullets li{ margin-bottom: 6px; color: var(--ink); font-size: 0.95rem; max-width: 62ch; }
+.single-line{ color: var(--ink); }
 
-/* ---------- Portfolio list ---------- */
-.portfolio-item{ padding-top: 46px; border-top: 1px solid var(--line); }
-.portfolio-item:first-of-type{ border-top: none; padding-top: 0; }
-.portfolio-item .inline-photo{ aspect-ratio: 16/9; }
-
-/* ---------- Resume ---------- */
-form.contact-form input:focus, form.contact-form textarea:focus{ outline: 1px solid var(--ink); }
-form.contact-form textarea{ min-height: 120px; resize: vertical; }
-form.contact-form .submit-link{
-  align-self:center; text-align:center; text-transform: uppercase; letter-spacing: 0.08em;
-  font-size: 0.85rem; border: 1px solid var(--ink); padding: 11px 26px; text-decoration:none;
-}
-form.contact-form .submit-link:hover{ background: var(--ink); color:#fff; }
-.contact-info-list{ list-style:none; text-align:center; }
-.contact-info-list li{ margin-bottom: 10px; font-size: 0.95rem; }
-.contact-info-list .label{ display:block; font-size: 0.72rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--ink-soft); margin-bottom: 2px; }
-
-/* ---------- Footer ---------- */
 footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 .footer-inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
 .footer-nav{ font-size: 0.82rem; }
-.footer-nav a{ text-decoration:none; color: var(--ink-soft); }
-.footer-nav a:hover{ color: var(--ink); }
+.footer-nav a{ text-decoration:none; color: var(--ink); }
 .footer-nav .sep{ color: var(--line); margin: 0 8px; }
-.footer-bottom{ font-size: 0.78rem; color: var(--ink-soft); }
-
-/* reveal */
+.footer-bottom{ font-size: 0.78rem; color: var(--ink); }
 .reveal{ opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in{ opacity:1; transform: translateY(0); }
-
 </style>
 </head>
 <body>
@@ -214,41 +118,154 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <h1>Resume</h1>
 
     <div class="resume-actions reveal">
-      <a href="#" title="Replace this link with your resume PDF">Download PDF résumé</a>
+      <a href="resume.pdf" download>Download PDF Résumé</a>
     </div>
 
     <div class="reveal">
       <span class="cat-label">Education</span>
       <ul class="resume-list">
-        <li><em>Bachelor of Science, Mechanical Engineering</em> — University at Buffalo, The State University of New York. <span class="sub">Expected May 2028. Relevant coursework: Statics, Dynamics, Mechanics of Solids, Differential Equations, Thermodynamics, Engineering Computations (MATLAB), Electrical Engineering Concepts.</span></li>
+        <li>
+          <div class="entry-title"><em>Bachelor of Science, Mechanical Engineering</em> — University at Buffalo, The State University of New York</div>
+          <div class="entry-date">Expected May 2028</div>
+          <ul class="bullets">
+            <li>Relevant coursework: Statics, Dynamics, Mechanics of Solids, Differential Equations, Thermodynamics, Engineering Computations (MATLAB), Electrical Engineering Concepts.</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
     <div class="reveal">
-      <span class="cat-label">Engineering Experience</span>
+      <span class="cat-label">Engineering Projects</span>
       <ul class="resume-list">
-        <li><em>Rover Tank Tread Drivetrain</em> — ASME, University at Buffalo. <span class="sub">Sept 2025 – May 2026. Designed modular 3D-printed track links in Fusion 360 with a standardized 20 mm pitch; selected the final W-shaped tread design after five-trial sand testbed testing (3.88 m avg. distance).</span></li>
-        <li><em>Mechanical Systems Testing</em> — ASME, University at Buffalo. <span class="sub">Sept 2025 – May 2026. Conducted 40+ validation tests on bearings, treads, motors, and payload mechanisms; authored an 80+ page technical report.</span></li>
-        <li><em>Tuning Fork Vibrations Simulator</em> — Independent MATLAB Project. <span class="sub">Jul – Aug 2025. Implemented Euler-Bernoulli beam theory, Newton-Raphson root finding, and finite-difference solvers to compute mode shapes and natural frequencies.</span></li>
-        <li><em>Automated Hamburger Flipper</em> — Independent Project. <span class="sub">Jan – May 2025. Built and programmed an Arduino-controlled flipping mechanism with servo motors and laser sensors.</span></li>
-        <li><em>Functional Bluetooth Subwoofer Speaker</em> — Independent Project. <span class="sub">Jan – May 2025. Fabricated a wooden enclosure and wired a two-way Bluetooth speaker system.</span></li>
+        <li>
+          <div class="entry-title"><em>Rover Tank Tread Drivetrain</em> — ASME, University at Buffalo</div>
+          <div class="entry-date">Sept 2025 – May 2026</div>
+          <ul class="bullets">
+            <li>Designed modular rover track links with a standardized 20mm pitch in Fusion 360, developing friction-fit and snap-fit linkage concepts, interlocking terminals, and track pad geometries for a 3D-printed tracked rover.</li>
+            <li>3D printed PLA+ track link prototypes, assembled track systems, and refined designs based on prototype testing.</li>
+            <li>Conducted five-trial performance testing of five tread patterns in a sand testbed, comparing travel distance under constant motor torque and selecting the final W-shaped tread design with the highest average distance (3.88m).</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Mechanical Systems Testing</em> — ASME, University at Buffalo</div>
+          <div class="entry-date">Sept 2025 – May 2026</div>
+          <ul class="bullets">
+            <li>Conducted 40+ validation tests on bearings, treads, motors, chassis members, brackets, and payload mechanisms.</li>
+            <li>Evaluated component performance through slippage, vibration, deflection, rotational efficiency, failure-load, thermal, and repeated-cycle testing using custom-built rigs and 6000 RPM motor-driven setups.</li>
+            <li>Analyzed test data to support material selection and design validation, writing an 80+ page technical report.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Tuning Fork Vibrations Simulator</em> — Independent MATLAB Project</div>
+          <div class="entry-date">Jul 2025 – Aug 2025</div>
+          <ul class="bullets">
+            <li>Developed a MATLAB program implementing Euler-Bernoulli beam theory to simulate tuning fork vibrations for steel, brass, and aluminum across notes A0–A7 (27.5–3520 Hz), calculating dimensions for each tuning fork design.</li>
+            <li>Implemented Newton-Raphson root finding, finite-difference discretization, boundary conditions, and matrix-based numerical solvers to compute the first 12 eigenvalues, mode shapes, natural frequencies, and beam deflections.</li>
+            <li>Automated tuning fork geometry calculations, material property analysis, cost estimation, CSV export, and engineering visualizations, including mode shape plots and time-dependent beam deflection simulations.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Automated Hamburger Flipper</em> — Independent Project</div>
+          <div class="entry-date">Jan 2025 – May 2025</div>
+          <ul class="bullets">
+            <li>Built a hamburger flipper using Arduino, servo motors, DC motors, laser sensors, and 3D-printed components.</li>
+            <li>Programmed Arduino control logic for burger detection, probe movement, spatula flipping, and motor sequencing.</li>
+            <li>Fabricated, assembled, and tested the spatula assembly, probe mechanism, and threaded-rod drive system.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Functional Bluetooth Subwoofer Speaker</em> — Independent Project</div>
+          <div class="entry-date">Jan 2025 – May 2025</div>
+          <ul class="bullets">
+            <li>Assembled a Bluetooth 2-way speaker with a woofer, tweeter, Bluetooth amplifier, and 3.5mm audio input.</li>
+            <li>Fabricated the wooden enclosure in the machine shop using cutting, drilling, sanding, and assembly techniques.</li>
+            <li>Installed and wired the speaker drivers, amplifier, and Bluetooth module, testing wired and wireless audio playback.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="reveal">
+      <span class="cat-label">Hackathons &amp; Competitions</span>
+      <ul class="resume-list">
+        <li>
+          <div class="entry-title"><em>Abay Wildfire Education Platform</em> — 3rd Place, National Hackathon, Kazakhstan</div>
+          <div class="entry-date">Jun 2023 – Jul 2023</div>
+          <ul class="bullets">
+            <li>Led an interdisciplinary team in developing a web platform following the 2023 Abay Region wildfires to improve public wildfire preparedness through emergency guidance, educational resources, and real-time fire risk awareness.</li>
+            <li>Coordinated project development, delegated tasks between software developers and content creators, and prepared and presented the final solution.</li>
+            <li>Developed a mobile application concept and was awarded 3rd place among approximately 15 competing teams.</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
     <div class="reveal">
       <span class="cat-label">Leadership &amp; Involvement</span>
       <ul class="resume-list">
-        <li><em>Event Planner and Coordinator</em> — ASME, University at Buffalo Chapter. <span class="sub">Sept 2025 – Present. Developed a sponsor-facing website and host GBMs and project meetings.</span></li>
-        <li><em>President of Pledge Class</em> — Theta Tau, Zeta Gamma Chapter. <span class="sub">Jan 2025 – May 2025. Led a pledge class of 13 students through four engineering projects.</span></li>
+        <li>
+          <div class="entry-title"><em>Social Media Committee Head</em> — Theta Tau, Zeta Gamma Chapter</div>
+          <div class="entry-date">2026 – Present</div>
+          <ul class="bullets">
+            <li>Lead the chapter's social media committee, creating promotional content and managing the fraternity's online presence.</li>
+            <li>Design and publish event announcements, project highlights, member recognition posts, birthday features, and monthly "Brother of the Month" campaigns.</li>
+            <li>Increased member engagement and documented chapter activities throughout the academic year.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Event Planner &amp; Coordinator</em> — ASME, University at Buffalo Chapter</div>
+          <div class="entry-date">Sept 2025 – Present</div>
+          <ul class="bullets">
+            <li>Planned and coordinated chapter General Body Meetings (GBMs) and project meetings, supporting communication between project teams and chapter members.</li>
+            <li>Developing the chapter's sponsor-facing website to showcase engineering competition teams, technical projects, and chapter initiatives, strengthening industry outreach and providing a centralized portfolio of ASME UB activities.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>President of Pledge Class</em> — Theta Tau, Zeta Gamma Chapter</div>
+          <div class="entry-date">Jan 2025 – May 2025</div>
+          <ul class="bullets">
+            <li>Led a 13-member pledge class through multiple interdisciplinary engineering projects, including an Automated Hamburger Flipper, Functional Bluetooth Speaker, and an interactive Theta Tau game.</li>
+            <li>Coordinated project schedules, delegated responsibilities, organized fundraising to purchase project materials, and led twice-weekly technical progress presentations.</li>
+            <li>Achieved a 100% successful pledge class completion rate, with every member completing the program on schedule.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="reveal">
+      <span class="cat-label">Community Involvement</span>
+      <ul class="resume-list">
+        <li>
+          <div class="entry-title"><em>Hearts for the Homeless Volunteer</em> — Theta Tau</div>
+          <div class="entry-date">Jan 2025 – Present</div>
+          <ul class="bullets">
+            <li>Assisted with sorting and stocking donated food, clothing, and essential supplies supporting Hearts for the Homeless' outreach programs serving individuals experiencing homelessness throughout Western New York.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Russian Language Tutor</em> — Russian Club, Cyprus</div>
+          <div class="entry-date">Sept 2023 – May 2024</div>
+          <ul class="bullets">
+            <li>Led twice-weekly group tutoring sessions for approximately 12 middle school students, helping bilingual and beginner learners strengthen reading, writing, grammar, and conversational Russian while preserving language fluency within the local Russian-speaking community.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="entry-title"><em>Charity Club Volunteer</em> — Shugyla Foundation, Kazakhstan</div>
+          <div class="entry-date">Sept 2021 – May 2022</div>
+          <ul class="bullets">
+            <li>Participated in school-led fundraising initiatives by preparing and selling homemade food to support families in need.</li>
+            <li>Helped raise approximately $1,000, providing groceries and essential household supplies for 10 local families through the Shugyla Foundation.</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
     <div class="reveal">
       <span class="cat-label">Skills &amp; Languages</span>
       <ul class="resume-list">
-        <li><em>Technical</em> — SolidWorks, Fusion 360, MATLAB, Python, Arduino, 3D Printing</li>
-        <li><em>Core Competencies</em> — Communication, Critical Thinking, Teamwork, Leadership</li>
-        <li><em>Languages</em> — Russian (Fluent), Kazakh (Fluent), English (Fluent), Turkish (Conversational)</li>
+        <li><span class="single-line"><em>Technical</em> — SolidWorks, Fusion 360, MATLAB, Python, Arduino, 3D Printing</span></li>
+        <li><span class="single-line"><em>Core Competencies</em> — Communication, Critical Thinking, Teamwork, Leadership</span></li>
+        <li><span class="single-line"><em>Languages</em> — Russian (Fluent), Kazakh (Fluent), English (Fluent), Turkish (Conversational)</span></li>
       </ul>
     </div>
   </div>
