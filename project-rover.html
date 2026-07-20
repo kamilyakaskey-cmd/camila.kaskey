@@ -102,14 +102,14 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 <main>
   <div class="wrap">
     <div class="hero-head">
-      <div class="eyebrow">MECHANICAL TESTING · CAD DESIGN · FEA · 3D PRINTING</div>
-      <h1>ASME Competition Rover: Drivetrain Design & Mechanical Testing</h1>
+      <div class="eyebrow">Mechanical Testing · CAD Design · FEA · 3D Printing</div>
+      <h1>ASME Competition Rover: Drivetrain Design &amp; Mechanical Testing</h1>
       <p class="lede">Led the mechanical testing and validation of an ASME competition rover while designing, prototyping, and iterating its modular tracked drivetrain through CAD, FEA, and rapid prototyping.</p>
     </div>
   </div>
 
   <figure class="hero-photo">
-    <img src="images/rover/sand_testing.jpg" alt="The completed rover undergoing mobility testing in a sand testbed" style="width:100%;border-radius:2px;">
+    <img src="sand_testing.jpg" alt="The completed rover undergoing mobility testing in a sand testbed" style="width:100%;border-radius:2px;">
     <figcaption class="wrap">The rover during mobility testing in the sand testbed.</figcaption>
   </figure>
 
@@ -118,15 +118,15 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">01 · Project Overview</span>
       <h2>Overview</h2>
-      <p>This project involved the mechanical design and development of a tracked drivetrain system for an ASME competition rover. The goal was to create a modular, 3D-printable track system capable of reliable mobility over loose, uneven terrain.</p>
+      <p>As part of an ASME competition team, I contributed to the design, prototyping, and validation of a modular tracked drivetrain for an autonomous rover. The objective was to develop a 3D-printable drivetrain capable of reliable mobility across loose terrain while integrating with the rover's overall mechanical system.</p>
       <p>I was responsible for both the mechanical design and the mechanical testing of the system. As testing lead, my scope covered the entire rover — evaluating materials and mobility performance across all of its parts, not just the drivetrain. This page walks through that full process, from initial design to final testing.</p>
     </div>
 
     <div class="section">
       <span class="cat-label">02 · Mechanical Design</span>
       <h2>Mechanical Design Approach</h2>
-      <p>The drivetrain needed to balance a few competing goals: enough structural rigidity to survive repeated mechanical loading, a geometry that could be reliably manufactured through 3D printing, and a track system that could maintain traction on loose terrain like sand.</p>
-      <p>Rather than designing the drivetrain as a single fixed unit, I approached it as a set of modular components — track links, sprockets, a structural frame, and connecting hardware — that could each be iterated on independently as testing revealed where improvements were needed.</p>
+      <p>The drivetrain was designed to provide reliable mobility on loose terrain while remaining modular and practical to manufacture using 3D printing. Since the rover would be tested repeatedly, the design also needed to withstand mechanical loading, maintain track alignment, and deliver consistent traction throughout development.</p>
+      <p>Instead of designing the drivetrain as a single assembly, I broke it into modular components, including track links, sprockets, structural supports, and custom hardware. This made it easier to improve individual parts as testing revealed weaknesses or opportunities for refinement. Components could be redesigned, reprinted, and tested without rebuilding the entire drivetrain, making the iteration process faster and more efficient.</p>
     </div>
 
     <div class="section">
@@ -134,7 +134,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <h2>CAD Development</h2>
       <p>The full drivetrain assembly was modeled in Fusion 360, including the drive and idler sprockets, the structural frame, and the individual track links. This top-down assembly view shows the overall track layout and drivetrain geometry that the rest of the system was built around.</p>
       <figure>
-        <img src="images/rover/drivetrain_cad_top.jpg" alt="Top-view CAD assembly of the drivetrain showing sprockets, frame, and track links" style="width:100%;border-radius:2px;">
+        <img src="drivetrain_cad_top.jpg" alt="Top-view CAD assembly of the drivetrain showing sprockets, frame, and track links" style="width:100%;border-radius:2px;">
         <figcaption>Top view of the drivetrain CAD assembly — track layout, drive/idler sprockets, structural frame, and track links.</figcaption>
       </figure>
     </div>
@@ -145,11 +145,11 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <p>Beyond the overall drivetrain assembly, I designed individual structural components to address specific mechanical requirements. A structural side plate was developed to support multiple drivetrain elements and contribute to the overall rigidity of the chassis. I also designed a custom tread pin, which connects the track system and helps maintain alignment between track components.</p>
       <div class="figure-row">
         <figure>
-          <img src="images/rover/side_plate_cad.jpg" alt="CAD render of the structural side plate" style="width:100%;border-radius:2px;">
+          <img src="side_plate_cad.jpg" alt="CAD render of the structural side plate" style="width:100%;border-radius:2px;">
           <figcaption>Structural side plate, designed to support drivetrain components and reinforce the chassis.</figcaption>
         </figure>
         <figure>
-          <img src="images/rover/tread_pin_cad.jpg" alt="CAD render of the custom tread pin" style="width:100%;border-radius:2px;">
+          <img src="tread_pin_cad.jpg" alt="CAD render of the custom tread pin" style="width:100%;border-radius:2px;">
           <figcaption>Custom tread pin, connecting track links and maintaining alignment between components.</figcaption>
         </figure>
       </div>
@@ -162,15 +162,15 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <p>The structural side plate was analyzed for both stress and displacement, which helped identify areas of higher stress concentration and gave a sense of how the geometry would deflect under load — informing decisions before committing the design to print.</p>
       <div class="figure-row-3">
         <figure>
-          <img src="images/rover/tread_pin_fea.jpg" alt="FEA stress analysis of the tread pin" style="width:100%;border-radius:2px;">
+          <img src="tread_pin_fea.jpg" alt="FEA stress analysis of the tread pin" style="width:100%;border-radius:2px;">
           <figcaption>Tread pin — stress analysis.</figcaption>
         </figure>
         <figure>
-          <img src="images/rover/side_plate_fea_stress.jpg" alt="FEA stress analysis of the structural side plate" style="width:100%;border-radius:2px;">
+          <img src="side_plate_fea_stress.jpg" alt="FEA stress analysis of the structural side plate" style="width:100%;border-radius:2px;">
           <figcaption>Side plate — stress distribution.</figcaption>
         </figure>
         <figure>
-          <img src="images/rover/side_plate_fea_disp.jpg" alt="FEA displacement analysis of the structural side plate" style="width:100%;border-radius:2px;">
+          <img src="side_plate_fea_disp.jpg" alt="FEA displacement analysis of the structural side plate" style="width:100%;border-radius:2px;">
           <figcaption>Side plate — displacement analysis.</figcaption>
         </figure>
       </div>
@@ -183,16 +183,16 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <p>A later prototype (shown in red) reflected structural refinements and better integration between subsystems, and served as a further assembly validation step on the way to the final rover.</p>
       <div class="figure-row">
         <figure>
-          <img src="images/rover/prototype_white.jpg" alt="First fully assembled drivetrain prototype" style="width:100%;border-radius:2px;">
+          <img src="prototype_white.jpg" alt="First fully assembled drivetrain prototype" style="width:100%;border-radius:2px;">
           <figcaption>First fully assembled drivetrain prototype — used to verify fit and clearances.</figcaption>
         </figure>
         <figure>
-          <img src="images/rover/prototype_red_wide.jpg" alt="Later drivetrain prototype with structural refinements" style="width:100%;border-radius:2px;">
+          <img src="prototype_red_wide.jpg" alt="Later drivetrain prototype with structural refinements" style="width:100%;border-radius:2px;">
           <figcaption>A later prototype iteration, reflecting structural refinements and improved subsystem integration.</figcaption>
         </figure>
       </div>
       <figure>
-        <img src="images/rover/prototype_red_detail.jpg" alt="Detail view of the refined drivetrain prototype" style="width:100%;border-radius:2px;">
+        <img src="prototype_red_detail.jpg" alt="Detail view of the refined drivetrain prototype" style="width:100%;border-radius:2px;">
         <figcaption>Detail view of the refined prototype, showing the drivetrain and track assembly.</figcaption>
       </figure>
     </div>
@@ -205,7 +205,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <p>On the mechanical side, I ran movement and mobility testing across the rover's parts more broadly, including the sand testbed trials for the tread system. For the tread specifically, I evaluated multiple patterns across repeated trials, comparing travel distance under constant motor torque. A W-shaped tread pattern consistently produced the best performance, with the highest average travel distance (3.88m) across trials, and was selected as the final design.</p>
       <p>This process reinforced how much physical testing shapes a mechanical design — several refinements to material choices, track geometry, and the drivetrain assembly came directly out of what was learned through hands-on testing, rather than from CAD or analysis alone.</p>
       <figure>
-        <img src="images/rover/sand_testing.jpg" alt="The rover being tested in the sand testbed" style="width:100%;border-radius:2px;">
+        <img src="sand_testing.jpg" alt="The rover being tested in the sand testbed" style="width:100%;border-radius:2px;">
         <figcaption>Sand testbed trials, used to evaluate tracked mobility and traction across tread designs.</figcaption>
       </figure>
     </div>
@@ -215,7 +215,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <h2>System Integration</h2>
       <p>After the mechanical systems were completed, the rover underwent system-level integration testing, including validation of the onboard camera system. I did not design the camera itself — this stage was about confirming that the vision system functioned correctly once integrated with the completed mechanical platform.</p>
       <figure>
-        <img src="images/rover/camera_testing.jpg" alt="Onboard camera feed during integration testing" style="width:100%;border-radius:2px;">
+        <img src="camera_testing.jpg" alt="Onboard camera feed during integration testing" style="width:100%;border-radius:2px;">
         <figcaption>Onboard camera feed during system integration testing.</figcaption>
       </figure>
     </div>
@@ -225,7 +225,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <h2>Final Rover</h2>
       <p>After multiple design iterations, the completed mechanical platform brought together the integrated drivetrain, track system, payload mounting, and onboard electronics into a single working rover.</p>
       <figure>
-        <img src="images/rover/completed_rover.jpg" alt="The completed rover after mechanical integration" style="width:100%;border-radius:2px;">
+        <img src="completed_rover.jpg" alt="The completed rover after mechanical integration" style="width:100%;border-radius:2px;">
         <figcaption>The completed rover, with drivetrain, track system, payload mounting, and electronics integrated.</figcaption>
       </figure>
     </div>
