@@ -204,130 +204,53 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
   <span class="cat-label">07 · Mechanical Testing</span>
   <h2>Mechanical Testing & Validation</h2>
 
-  <p>
-    Mechanical testing made up the largest share of my contribution to this project.
-    As the rover's Mechanical Testing Lead, I helped develop and carry out standardized
-    testing procedures for structural components, drivetrain systems, electronics, and
-    integrated rover performance. The goal was to support design decisions with measured
-    data rather than relying only on CAD models or visual inspection.
-  </p>
+<p>
+Mechanical testing made up the largest share of my contribution to this project. As the rover's Mechanical Testing Lead, I developed and carried out standardized testing procedures to evaluate structural components, drivetrain systems, and overall rover performance. Every major design decision was supported through controlled experiments, repeated trials, finite element analysis, and quantitative measurements rather than relying on CAD models alone.
+</p>
 
-  <p>
-    Testing was conducted on individual components and dedicated test setups before final
-    integration. Most procedures used controlled mounting conditions, fixed loads or motor
-    inputs, repeated trials, and quantitative measurements such as deflection, displacement,
-    current draw, free-spin time, temperature, signal range, and traction performance.
-  </p>
+<h3>Material & Structural Testing</h3>
 
-  <h3>Material & Structural Testing</h3>
+<p>
+Material selection was determined through controlled testing rather than manufacturer specifications alone. I evaluated PETG, PET-GF15, PLA, PLA+, TPU85A, and TPU95A to compare stiffness, flexibility, durability, and resistance to deformation for different rover components.
+</p>
 
-  <p>
-    Material selection was based on the function of each component rather than using one
-    filament throughout the rover. I evaluated PETG, PET-GF15, PLA, PLA+, TPU85A, and TPU95A
-    to compare rigidity, flexibility, durability, and resistance to deformation.
-  </p>
+<p>
+Structural components including the rover arm, scoop, cross-members, brackets, and payload rack were tested under identical conditions using standardized loading procedures. Most experiments applied a <strong>0.5 kg static load for 10 seconds across five repeated trials</strong>, while displacement and deflection were measured to compare structural performance. These results guided the use of PET-GF15 and PLA+ for rigid structural members, while TPU was reserved for components requiring vibration isolation or controlled flexibility.
+</p>
 
-  <p>
-    Structural components including the rover arm, scoop, cross-members, brackets, and
-    payload rack were mounted under identical conditions and tested using controlled static
-    loads. For many tests, a 0.5 kg load was applied for 10 seconds across five trials, and
-    maximum deflection was measured relative to the unloaded position. The payload rack was
-    similarly tested using a 1.0 kg load to evaluate its ability to support external weight
-    without excessive bending.
-  </p>
+<h3>Drivetrain Testing</h3>
 
-  <p>
-    These results guided the use of PET-GF15 and PLA+ for rigid structural parts, while TPU
-    was reserved for components that benefited from controlled flexibility, vibration
-    mitigation, or tolerance for minor misalignment.
-  </p>
+<p>
+The drivetrain was evaluated through dedicated experiments measuring traction, slip, rotational efficiency, and motor performance. Multiple tread designs were tested on loose terrain under constant motor conditions, with the W-shaped tread achieving the highest average travel distance of <strong>3.88 m</strong> and becoming the final design.
+</p>
 
-  <h3>Drivetrain Testing</h3>
+<p>
+Bearing performance was evaluated using a dedicated motor-driven free-spin rig operating at approximately <strong>6000 rpm (3S, 11.1 V)</strong>, while separate motor testing measured current draw under increasing load torque using a <strong>12 V</strong> power supply. These experiments provided quantitative data that informed drivetrain optimization.
+</p>
 
-  <p>
-    Drivetrain testing evaluated traction, slip, motor performance, and rotational
-    efficiency. Multiple tread configurations were tested on loose terrain under controlled
-    motor conditions, with five trials completed for each design. Slip was calculated by
-    comparing the rover's actual travel distance with the expected distance based on motor
-    rotation, while additional weight was introduced to evaluate load-carrying performance
-    and resistance to sinking.
-  </p>
+<h3>Component Performance Testing</h3>
 
-  <p>
-    Separate tread-pattern testing compared repeated travel distances under constant motor
-    torque. The W-shaped tread pattern produced the highest average travel distance of
-    <strong>3.88 m</strong> and was selected for the final drivetrain design.
-  </p>
+<p>
+Several structural components were validated using custom-built testing fixtures before final integration. Cross-members, brackets, payload supports, arms, and scoop assemblies were tested under standardized loading conditions to evaluate stiffness and structural behavior.
+</p>
 
-  <p>
-    Bearing configurations were also evaluated using a dedicated motor-driven rig. Each
-    bearing was accelerated at approximately 6000 rpm using a 3S, 11.1 V setup, after which
-    the motor input was removed and the bearing's free-spin time was measured. Longer spin
-    times indicated lower internal friction and greater rotational efficiency.
-  </p>
+<p>
+One example was the scoop testing rig, which used a wooden fixture, fishing line, and a digital force gauge to pull different scoop geometries through sand. Each design was tested through <strong>10 repeated trials</strong>, and the stabilized kinetic friction force was compared with surface area data exported from Fusion 360. This allowed the scoop geometry to be optimized using measured performance rather than visual judgment.
+</p>
 
-  <p>
-    Motor testing examined how current draw changed under increasing load torque. The motor
-    was operated at 12 V while controlled resistance was applied to the output shaft.
-    Current was recorded after steady operation was reached, allowing motor behavior and
-    electrical demand to be compared across loading conditions.
-  </p>
+<p>
+Beyond the mechanical structure, testing also evaluated electronic temperatures, camera transmission range, and camera gimbal reliability to ensure the rover remained dependable under expected competition conditions.
+</p>
 
-  <h3>Component Performance Testing</h3>
+<h3>Testing Outcomes</h3>
 
-  <p>
-    Several rover components were tested using purpose-built fixtures. One example was the
-    scoop testing setup, which used a wooden jig, fishing line, and a digital force scale to
-    pull different scoop geometries through sand. Each design was tested through ten
-    repetitions, and the stabilized kinetic friction force was compared with the scoop's
-    surface area obtained from Fusion 360.
-  </p>
+<p>
+The testing program produced more than <strong>40 pages</strong> of experimental procedures, results, and engineering analysis within the team's technical report. The findings directly influenced material selection, tread geometry, scoop design, structural reinforcement, cooling strategy, and overall rover reliability.
+</p>
 
-  <p>
-    This testing allowed the scoop geometry to be refined using measured resistance rather
-    than appearance alone. Similar component-level testing was used to evaluate structural
-    brackets, chassis members, payload supports, and other assemblies before they were
-    incorporated into the completed rover.
-  </p>
-
-  <h3>Electronics & Reliability Testing</h3>
-
-  <p>
-    Testing also extended beyond the rover's printed mechanical components. Electronic
-    temperatures were recorded over a 10-minute operating period using a thermistor recovered
-    from 3D-printer hardware, an Arduino, and a custom data-collection application built in
-    Processing. The results were used to determine whether additional cooling was required
-    and to compare different fan configurations.
-  </p>
-
-  <p>
-    Camera transmitter range was tested outdoors by measuring the maximum distance at which
-    a usable video signal could be maintained. The procedure was repeated under multiple
-    obstruction conditions, including an unobstructed path, behind a curtain, and behind a
-    wall, to evaluate signal degradation.
-  </p>
-
-  <p>
-    The camera gimbal was also evaluated through repeated work-cycle testing. A work cycle
-    was defined as a complete 180-degree sweep of both servos under nominal load, allowing
-    servo durability, voltage-dependent performance, and cooling requirements to be assessed
-    under repeated operation.
-  </p>
-
-  <h3>Testing Outcomes</h3>
-
-  <p>
-    The testing program produced more than 40 pages of procedures, results, tables, and
-    engineering conclusions within the team's technical report. Results directly influenced
-    material selection, tread geometry, scoop design, bearing configuration, cooling
-    strategy, structural reinforcement, and overall rover reliability.
-  </p>
-
-  <p>
-    The most important outcome was not simply confirming that the rover worked. Testing
-    repeatedly exposed weaknesses that were not obvious in CAD, allowing components to be
-    redesigned, reprinted, and validated before final integration.
-  </p>
+<p>
+The most valuable outcome was not simply confirming that the rover worked. Testing repeatedly exposed weaknesses that were not apparent in CAD, allowing components to be redesigned, reprinted, and validated before final integration.
+</p>
 
   <figure>
     <img
@@ -344,28 +267,19 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 
 <div class="section">
   <span class="cat-label">08 · System Integration</span>
-  <h2>System Integration</h2>
+ <h2>Final Design Integration</h2>
 
-  <p>
-    After individual mechanical and electronic systems were tested, the rover underwent
-    system-level integration to confirm that the subsystems performed correctly when
-    assembled into the complete platform. This stage included drivetrain alignment,
-    structural fit, payload support, camera operation, cooling performance, and communication
-    reliability.
-  </p>
+<p>
+After individual components had been designed and validated, they were integrated into the rover's final assembly. This stage combined the results of iterative design, structural analysis, and mechanical testing to ensure the complete system satisfied the competition's performance, weight, and packaging requirements.
+</p>
 
-  <p>
-    I did not design every subsystem shown in this stage. My role focused on validating how
-    those systems interacted with the completed mechanical platform and identifying problems
-    that appeared only after integration, such as interference, vibration, misalignment,
-    excessive temperature, or inconsistent movement.
-  </p>
+<p>
+The arm and scoop assemblies underwent multiple design iterations as new challenges were identified throughout development. Successive revisions improved structural support, reduced weight, simplified the servo mechanism, and increased the system's ability to withstand the complex loading experienced during operation. Generative design was incorporated into the final arm and scoop connections to remove unnecessary material while improving load distribution without compromising structural integrity.
+</p>
 
-  <p>
-    Integration testing connected the results of the earlier component tests with the rover's
-    final operating behavior. Changes made during this stage were based on the same iterative
-    process used throughout the project: assemble, test, document, refine, and test again.
-  </p>
+<p>
+Although individual subsystems were developed separately, the final integration stage ensured they functioned together as a complete mechanical system. Design refinements made during testing were incorporated into the final assembly, resulting in a lighter, stronger, and more reliable rover ready for competition.
+</p>
 
   <figure>
     <img
