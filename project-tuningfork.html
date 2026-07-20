@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuning Fork Vibrational Analysis — Camila Kaskey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #FFFFFF;
+  --ink: #222222;
+  --line: #E4E4E2;
+  --accent: #3A5A50;
+  --accent-tint: #EAF0EC;
+  --serif: 'Lora', serif;
+  --sans: 'Inter', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a{ color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
+a:hover{ text-decoration-color: var(--ink); }
+img{ max-width:100%; display:block; }
+.wrap{ max-width: 780px; margin:0 auto; padding: 0 28px; }
+em{ font-style: italic; }
+code{ font-family: var(--mono); font-size: 0.88em; background: #F2F1ED; padding: 1px 5px; border-radius: 2px; }
+
+.topbar{ padding: 26px 0 20px; text-align:center; border-bottom: 1px solid var(--line); }
+.brand{ font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.02em; text-decoration:none; display:block; margin-bottom: 16px; color: var(--ink); }
+nav.main-nav{ display:flex; gap: 26px; justify-content:center; flex-wrap: wrap; margin-bottom: 14px; }
+nav.main-nav a{ font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; text-decoration:none; color: var(--ink); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: border-color .15s ease; }
+nav.main-nav a:hover, nav.main-nav a.active{ border-color: var(--ink); }
+.social-icons{ display:flex; gap: 16px; justify-content:center; }
+.social-icons a{ color: var(--ink); text-decoration:none; }
+.social-icons svg{ width: 16px; height: 16px; }
+
+.back-link{ display:block; text-align:center; margin-top: 26px; font-size: 0.85rem; }
+
+main{ padding: 40px 0 100px; }
+.hero-head{ text-align:center; margin-bottom: 40px; }
+.eyebrow{ font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+h1{ font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.7rem); line-height: 1.15; }
+.lede{ margin-top: 18px; color: var(--ink); max-width: 60ch; margin-left:auto; margin-right:auto; font-size: 1.05rem; }
+
+.overview-photo{ max-width: 420px; margin: 0 auto 50px; }
+.overview-photo img{ width:100%; border-radius: 4px; border: 1px solid var(--line); }
+.overview-photo figcaption{ font-style: italic; font-size: 0.88rem; text-align:center; margin-top: 10px; }
+
+.section{ padding: 46px 0; border-top: 1px solid var(--line); }
+.section:first-of-type{ border-top: none; }
+.cat-label{
+  display:inline-block; font-family: var(--mono); font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.1em; background: #F2F1ED; color: var(--ink);
+  padding: 5px 12px; margin-bottom: 18px;
+}
+.section h2{ font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin-bottom: 16px; }
+.section h3{ font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin: 26px 0 10px; }
+.section h3:first-of-type{ margin-top: 0; }
+.section p{ margin-bottom: 14px; max-width: 68ch; }
+.section p:last-child{ margin-bottom: 0; }
+.section ul, .section ol{ margin: 14px 0 14px 20px; max-width: 68ch; }
+.section li{ margin-bottom: 8px; }
+
+.script-card{ border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; margin-bottom: 14px; }
+.script-card .fname{ font-family: var(--mono); font-weight: 500; font-size: 0.95rem; color: var(--accent); }
+.script-card p{ margin-top: 8px; margin-bottom: 8px; font-size: 0.95rem; }
+.script-card ul{ margin: 8px 0 0 18px; }
+.script-card li{ margin-bottom: 4px; font-size: 0.95rem; }
+
+figure{ margin: 24px 0; }
+figcaption{ font-style: italic; font-size: 0.88rem; color: var(--ink); margin-top: 10px; }
+
+.tag-row{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 8px; }
+.tag{ font-size: 0.82rem; padding: 5px 12px; background: var(--accent-tint); color: var(--accent); border-radius: 20px; font-weight: 500; }
+
+footer{ border-top: 1px solid var(--line); padding: 34px 0; }
+.footer-inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
+.footer-nav{ font-size: 0.82rem; }
+.footer-nav a{ text-decoration:none; color: var(--ink); }
+.footer-nav .sep{ color: var(--line); margin: 0 8px; }
+.footer-bottom{ font-size: 0.78rem; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="index.html">Camila Kaskey — Mechanical Engineering Student</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="social-icons">
+    <a href="https://linkedin.com/in/camila-kaskey-653ba1385" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.75h4V23h-4V8.75zM8.5 8.75h3.83v1.95h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.42c0-1.53-.03-3.5-2.13-3.5-2.14 0-2.47 1.67-2.47 3.39V23h-4V8.75z"/></svg>
+    </a>
+    <a href="mailto:kamilyak@buffalo.edu" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+    </a>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="eyebrow">MATLAB · Euler-Bernoulli Beam Theory · Numerical Simulation</div>
+      <h1>Tuning Fork Vibrational Analysis</h1>
+      <p class="lede">Modeling the vibration of a tuning fork using Euler-Bernoulli beam theory and custom numerical methods in MATLAB.</p>
+    </div>
+
+    <figure class="overview-photo">
+      <img src="tuningfork_modes.jpg" alt="Vibrational mode shapes of a cantilevered beam, modes 1 through 12">
+      <figcaption>The first 12 vibrational mode shapes computed for the cantilevered beam model.</figcaption>
+    </figure>
+
+    <div class="section">
+      <span class="cat-label">01 · Overview</span>
+      <h2>Overview</h2>
+      <p>This project models the vibration of a tuning fork using Euler-Bernoulli beam theory and numerical methods in MATLAB. The objective was to predict the behavior of a cantilevered tuning fork, calculate its natural vibration modes, simulate time-dependent motion, and determine the required dimensions for producing musical notes from A0 to A7 across multiple materials and cross-sectional geometries.</p>
+      <p>The project combined analytical mechanics with computational modeling, requiring the implementation of custom numerical algorithms rather than relying on built-in MATLAB toolboxes.</p>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">02 · Project Objectives</span>
+      <h2>Project Objectives</h2>
+      <ul>
+        <li>Model a tuning fork as a cantilevered beam</li>
+        <li>Calculate the first 12 natural vibration modes</li>
+        <li>Simulate dynamic beam deflection over time</li>
+        <li>Design tuning forks for musical notes A0–A7</li>
+        <li>Compare steel, brass, and aluminum designs</li>
+        <li>Estimate manufacturing dimensions and material costs</li>
+        <li>Export engineering results into formatted datasets</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">03 · Engineering Concepts</span>
+      <h2>Engineering Concepts</h2>
+      <p>This project applies several fundamental topics in mechanical engineering:</p>
+      <ul>
+        <li>Euler-Bernoulli beam theory</li>
+        <li>Structural vibrations</li>
+        <li>Natural frequencies</li>
+        <li>Mode shapes</li>
+        <li>Numerical root-finding</li>
+        <li>Finite difference methods</li>
+        <li>Time-dependent dynamic simulation</li>
+        <li>Material property analysis</li>
+        <li>Engineering design optimization</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">04 · My Approach</span>
+      <h2>My Approach</h2>
+      <p>Rather than solving a single calculation, I built a collection of MATLAB programs that work together to analyze an entire tuning fork design. The workflow consisted of:</p>
+      <ol>
+        <li>Determining beam dimensions required for different musical frequencies.</li>
+        <li>Computing the first twelve vibration modes using Newton-Raphson root finding.</li>
+        <li>Constructing analytical mode shapes from the governing beam equations.</li>
+        <li>Solving the transient beam equation using a finite difference time-stepping method.</li>
+        <li>Comparing different materials and cross-sectional geometries.</li>
+        <li>Exporting the results into reusable engineering data tables.</li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">05 · MATLAB Programs Developed</span>
+      <h2>MATLAB Programs Developed</h2>
+
+      <h3>Summary.m</h3>
+      <div class="script-card">
+        <div class="fname">Summary.m</div>
+        <p>Calculated tuning fork dimensions and estimated material cost for every combination of:</p>
+        <ul>
+          <li>Steel, brass, and aluminum</li>
+          <li>Rectangular and circular cross-section</li>
+        </ul>
+        <p>The script generated a complete design summary for all musical notes from A0 through A7.</p>
+      </div>
+
+      <h3>Products.m</h3>
+      <div class="script-card">
+        <div class="fname">Products.m</div>
+        <p>Expanded the design calculations by automatically exporting engineering data into six CSV files. Each file contains:</p>
+        <ul>
+          <li>Required beam dimensions</li>
+          <li>Estimated material cost</li>
+          <li>Four-decimal precision output</li>
+        </ul>
+        <p>This created reusable design tables suitable for additional engineering analysis.</p>
+      </div>
+
+      <h3>VibrationalModes.m</h3>
+      <div class="script-card">
+        <div class="fname">VibrationalModes.m</div>
+        <p>Calculated the first 12 natural vibration modes of a cantilevered beam. The program:</p>
+        <ul>
+          <li>Solved the characteristic beam equation using Newton-Raphson iteration</li>
+          <li>Computed mode shape coefficients</li>
+          <li>Generated normalized mode shapes</li>
+          <li>Saved all calculated data for later simulations</li>
+        </ul>
+      </div>
+
+      <h3>DynamicSolution.m</h3>
+      <div class="script-card">
+        <div class="fname">DynamicSolution.m</div>
+        <p>Simulated the vibration of a tuning fork over time. The program:</p>
+        <ul>
+          <li>Built a complete transient simulation</li>
+          <li>Tracked beam motion at multiple locations</li>
+          <li>Generated both spatial and time-history plots</li>
+          <li>Stored all simulation data for visualization</li>
+        </ul>
+      </div>
+
+      <h3>Deflection.m</h3>
+      <div class="script-card">
+        <div class="fname">Deflection.m</div>
+        <p>Implemented the numerical solver used throughout the project. The function solved the beam equation using a finite difference formulation by repeatedly solving the governing linear system at each time step. This was the core computational component responsible for the transient vibration simulation.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">06 · Numerical Methods</span>
+      <h2>Numerical Methods</h2>
+      <p>Several numerical techniques were implemented during the project:</p>
+      <ul>
+        <li>Newton-Raphson root finding</li>
+        <li>Finite difference discretization</li>
+        <li>Matrix-based linear system solving</li>
+        <li>Time integration</li>
+        <li>Spatial discretization</li>
+        <li>Numerical approximation of fourth-order beam derivatives</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">07 · Results</span>
+      <h2>Results</h2>
+      <p>The simulations successfully reproduced the expected behavior of a vibrating cantilever beam. Key outcomes included:</p>
+      <ul>
+        <li>First 12 vibration modes calculated</li>
+        <li>Dynamic beam deflection simulated over time</li>
+        <li>Design dimensions generated for musical notes A0–A7</li>
+        <li>Material comparison for steel, brass, and aluminum</li>
+        <li>Manufacturing cost estimates</li>
+        <li>Automated engineering data export</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">08 · Vibrational Mode Shapes</span>
+      <h2>Vibrational Mode Shapes</h2>
+      <figure>
+        <img src="tuningfork_modes.jpg" alt="Vibrational mode shapes of a cantilevered beam, modes 1 through 12, grouped into four subplots">
+        <figcaption>The first twelve vibration modes of the cantilevered beam. As the mode number increases, the beam develops additional nodes and exhibits progressively more complex deformation patterns. These mode shapes form the foundation for understanding the dynamic behavior of the tuning fork.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">09 · Time-Dependent Beam Deflection</span>
+      <h2>Time-Dependent Beam Deflection</h2>
+      <figure>
+        <img src="tuningfork_deflection.jpg" alt="Spatial deflection of the beam plotted at different time instants">
+        <figcaption>Transient beam deflection at multiple time instants during vibration. The simulation illustrates how displacement evolves along the beam length while maintaining the fixed boundary condition at the base and maximum motion near the free end.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">10 · Skills Demonstrated</span>
+      <h2>Skills Demonstrated</h2>
+      <div class="tag-row">
+        <span class="tag">MATLAB</span>
+        <span class="tag">Engineering Mathematics</span>
+        <span class="tag">Numerical Methods</span>
+        <span class="tag">Structural Dynamics</span>
+        <span class="tag">Euler-Bernoulli Beam Theory</span>
+        <span class="tag">Finite Difference Methods</span>
+        <span class="tag">Newton-Raphson Method</span>
+        <span class="tag">Matrix Computation</span>
+        <span class="tag">Dynamic Simulation</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Scientific Visualization</span>
+      </div>
+    </div>
+
+    <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-nav">
+      <a href="index.html">Home</a><span class="sep">|</span>
+      <a href="portfolio.html">Portfolio</a><span class="sep">|</span>
+      <a href="resume.html">Resume</a><span class="sep">|</span>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-bottom">© 2026 Camila Kaskey</div>
+  </div>
+</footer>
+
+</body>
+</html>
