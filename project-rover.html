@@ -147,9 +147,26 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 
     <div class="section">
       <span class="cat-label">03 · CAD Development</span>
-      <h2>CAD Development</h2>
-      <p>The drivetrain was designed and modeled in Fusion 360, allowing the complete system to be refined before manufacturing. Building the full assembly in CAD made it easier to verify component fit, track alignment, and the interaction between moving parts while identifying design issues early in development.</p>
-      <p>The modular CAD model also supported rapid iteration throughout the project. As testing revealed areas for improvement, individual components could be modified, integrated back into the assembly, and reprinted without redesigning the entire drivetrain.</p>
+       <div class="section">
+    <span class="cat-label">03 · CAD Development</span>
+
+    <h2>CAD Development</h2>
+
+    <p>
+        Fusion 360 served as the primary engineering platform throughout drivetrain development. I designed and modeled key drivetrain components, including the tread system, custom tread pins, structural side plate, and supporting assemblies before integrating them into a complete drivetrain model. Building the full assembly digitally allowed component fit, sprocket alignment, track engagement, clearances, and overall drivetrain motion to be evaluated before manufacturing began.
+    </p>
+
+    <p>
+        Rather than using CAD solely for modeling, it became an engineering tool throughout the design process. Assembly modeling and motion studies helped identify interference, alignment issues, and mechanical constraints early in development, allowing components to be refined before printing. Because the project relied entirely on additive manufacturing, every design revision could be prepared for fabrication quickly, supporting rapid iteration as testing revealed new improvements.
+    </p>
+
+    <p>
+        Finite Element Analysis (FEA) was integrated into the design workflow to evaluate structural performance before physical testing. Simulations were used to analyze stress distribution, displacement, reaction forces, bearing loads, factors of safety, and Von Mises stress while comparing candidate materials through their mechanical properties, including Young's modulus, yield strength, ultimate tensile strength, density, thermal conductivity, and thermal expansion. These analyses helped validate design decisions and identify potential weaknesses prior to manufacturing.
+    </p>
+
+    <p>
+        CAD models, simulation results, and physical testing continuously informed one another throughout development. Components were repeatedly redesigned, reassembled, and revalidated as new challenges emerged, allowing engineering decisions to be supported by both computational analysis and experimental testing before the drivetrain reached its final configuration.
+    </p>
       <figure>
         <img src="drivetrain_cad_top.jpg" alt="Top-view CAD assembly of the drivetrain showing sprockets, frame, and track links" style="width:100%;border-radius:2px;">
         <figcaption>Top view of the drivetrain CAD assembly — track layout, drive/idler sprockets, structural frame, and track links.</figcaption>
