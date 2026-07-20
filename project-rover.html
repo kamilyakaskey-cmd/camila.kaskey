@@ -207,10 +207,25 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 
     <div class="section">
       <span class="cat-label">05 · Finite Element Analysis</span>
-      <h2>Finite Element Analysis</h2>
-      <p>Before manufacturing, I used finite element analysis (FEA) to evaluate the structural performance of the custom-designed components. Running simulations before printing helped identify potential stress concentrations and deformation early in the design process, reducing unnecessary prototype iterations.</p>
-      <p>The tread pin was analyzed to evaluate stress distribution under load, while the structural side plate was evaluated for both stress and displacement. These analyses helped validate the designs and guided refinements before manufacturing.</p>
-      <div class="figure-row-3">
+
+    <h2>Finite Element Analysis</h2>
+
+    <p>
+        Finite Element Analysis (FEA) was integrated into the design process to evaluate component performance before manufacturing. Rather than relying solely on physical prototypes, simulations were used to identify potential failure locations, compare design iterations, and validate engineering decisions early in development, reducing unnecessary manufacturing and testing cycles.
+    </p>
+
+    <p>
+        My analyses focused primarily on the custom tread pin and structural side plate, where loading conditions representative of drivetrain operation were applied to evaluate structural behavior. The simulations examined Von Mises stress, displacement, reaction forces, bearing loads, and factors of safety while comparing candidate materials using properties such as Young's modulus, yield strength, ultimate tensile strength, density, and thermal characteristics.
+    </p>
+
+    <p>
+        Simulation results were used alongside engineering calculations and physical testing rather than as standalone validation. Areas of high stress or excessive deformation guided design refinements before manufacturing, while successful simulation results increased confidence that components would perform reliably under repeated loading.
+    </p>
+
+    <p>
+        By combining computational analysis with rapid prototyping and mechanical testing, design decisions were supported by both predictive simulation and experimental validation, creating a more efficient and reliable engineering development process.
+    </p>
+<div class="figure-row-3">
         <figure>
           <img src="tread_pin_fea.jpg" alt="FEA stress analysis of the tread pin" style="width:100%;border-radius:2px;">
           <figcaption>Tread pin — stress analysis.</figcaption>
