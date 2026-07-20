@@ -123,12 +123,27 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <p>I was responsible for both the mechanical design and the mechanical testing of the system. As testing lead, my scope covered the entire rover — evaluating materials and mobility performance across all of its parts, not just the drivetrain. This page walks through that full process, from initial design to final testing.</p>
     </div>
 
-    <div class="section">
-      <span class="cat-label">02 · Mechanical Design</span>
-      <h2>Mechanical Design Approach</h2>
-      <p>The drivetrain was designed to provide reliable mobility on loose terrain while remaining modular and practical to manufacture using 3D printing. Since the rover would be tested repeatedly, the design also needed to withstand mechanical loading, maintain track alignment, and deliver consistent traction throughout development.</p>
-      <p>Instead of designing the drivetrain as a single assembly, I broke it into modular components, including track links, sprockets, structural supports, and custom hardware. This made it easier to improve individual parts as testing revealed weaknesses or opportunities for refinement. Components could be redesigned, reprinted, and tested without rebuilding the entire drivetrain, making the iteration process faster and more efficient.</p>
-    </div>
+  <div class="section">
+    <span class="cat-label">02 · Mechanical Design</span>
+
+    <h2>Engineering Design Process</h2>
+
+    <p>
+        As Movement Subsystem Lead, I helped guide the development of the rover's drivetrain from initial concept selection through final validation. During the early design phase, our team evaluated multiple locomotion methods, including wheels, Archimedes screws, hexapod legs, and tracked systems. After comparing their expected performance on loose sand and considering the additional demands of the payload mechanism, we selected tracked locomotion because it provided greater surface contact, improved traction, and more effective torque transfer across the competition terrain.
+    </p>
+
+    <p>
+        My primary contributions focused on the drivetrain architecture and key mechanical components, including the tread system, custom tread pin, and structural side plate. I designed the drivetrain around a modular philosophy, allowing individual components to be redesigned, reprinted, and validated independently as testing identified weaknesses or opportunities for improvement. This significantly accelerated iteration while reducing manufacturing time and material waste throughout development.
+    </p>
+
+    <p>
+        Every design decision required balancing competing engineering constraints, including traction, structural integrity, manufacturability, assembly, weight, and long-term reliability in abrasive sand. The side plate was developed to accurately support the bearing system, maintain sprocket alignment, improve drivetrain rigidity, and simplify assembly. Component layouts and drivetrain architecture were continually refined to ensure reliable operation while remaining practical for additive manufacturing under the competition's 3D-printing requirements.
+    </p>
+
+    <p>
+        Iterative engineering played a central role throughout development. One example was an early threaded tread-pin concept, which initially appeared promising because of its secure mechanical connection. However, manufacturing trials revealed that the required vertical print orientation and fine thread geometry produced weak layer adhesion, making the pins susceptible to failure under repeated loading. Rather than forcing the design, we used these results to refine the drivetrain and pursue a more reliable solution. Throughout the project, engineering calculations, finite element analysis, rapid prototyping, and extensive physical testing were used together to validate design decisions and continuously improve subsystem performance before final integration.
+    </p>
+</div>
 
     <div class="section">
       <span class="cat-label">03 · CAD Development</span>
