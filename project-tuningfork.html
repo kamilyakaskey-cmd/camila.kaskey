@@ -119,7 +119,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="hero-head">
       <div class="eyebrow">MATLAB · Numerical Methods · Vibrations</div>
       <h1>Tuning Fork Vibrations Simulator</h1>
-      <p class="lede">A MATLAB program that models tuning fork vibration using Euler-Bernoulli beam theory — computing mode shapes, natural frequencies, and dynamic beam deflection across materials and musical notes.</p>
+      <p class="lede">Designed and implemented a MATLAB simulation to model tuning fork vibrations using Euler-Bernoulli beam theory. The program computes natural frequencies, visualizes vibrational mode shapes, simulates transient beam deflection, and determines tuning fork dimensions for musical notes A0-A7 across multiple materials and cross-sectional geometries.</p>
     </div>
 
     <figure class="overview-photo">
@@ -130,8 +130,8 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">01 · Project Overview</span>
       <h2>Overview</h2>
-      <p>This project modeled and analyzed tuning forks using Euler-Bernoulli beam theory, treating each tine as a cantilevered beam — fixed at its base and free at the tip. The goal was to calculate the beam's vibrational modes, simulate how its deflection evolves over time, and determine what material and geometry a tuning fork would need to produce a specific musical pitch.</p>
-      <p>The program covered all eight notes from A0 to A7 (27.5–3520 Hz), across three materials — steel, brass, and aluminum — and two cross-sections — rectangular and circular.</p>
+      <p>This project models each tine of a tuning fork as a cantilevered beam using Euler-Bernoulli beam theory. The objective was to predict its vibrational behavior, simulate beam deflection over time, and determine the material properties and geometric dimensions required to produce specific musical pitches.</p>
+      <p>The analysis covered notes A0 through A7 (27.5-3520 Hz) using steel, brass, and aluminum with both rectangular and circular cross-sections.</p>
     </div>
 
     <div class="section">
@@ -215,7 +215,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">06 · Dynamic Deflection Simulation</span>
       <h2>Dynamic Deflection Simulation</h2>
-      <p><code>DynamicSolution.m</code> simulated a brass rectangular arm vibrating at 440 Hz over 301 time steps. The plot below shows the beam's spatial deflection profile at six time instants, illustrating how deflection magnitude decreases over the simulated window and how curvature concentrates increasingly near the fixed end as the vibration progresses.</p>
+      <p><code>DynamicSolution.m</code> simulated a brass rectangular arm vibrating at 440 Hz over 301 time steps. The plot below shows the beam's spatial deflection profile at six time instants.The simulation tracks how beam deflection evolves during vibration. As expected for a cantilevered beam, displacement is constrained at the fixed end while the free end experiences the largest motion. The changing deflection profiles demonstrate the beam's transient dynamic response over time.</p>
       <figure>
         <img src="tuningfork_deflection.jpg" alt="Spatial deflection of the beam plotted at different time instants">
         <figcaption>Spatial deflection of the brass rectangular arm at successive time instants during the 440 Hz simulation.</figcaption>
@@ -242,8 +242,8 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     </div>
 
     <div class="section">
-      <span class="cat-label">08 · A Debugging Story</span>
-      <h2>A Debugging Story</h2>
+      <span class="cat-label">08 · Engineering Challenge</span>
+      <h2>Engineering Challenge</h2>
       <div class="callout">
         <p>The finite difference time-stepping scheme in <code>Deflection.m</code> solves <code>Aw⁽ⁿ⁺¹⁾ = b</code> at every time step. Early on, my <code>b(m)</code> vector only accounted for the time-stepping terms from the previous steps — but the scheme also needed the 4th spatial derivative contribution from the <em>current</em> time step folded into <code>b(m)</code> itself, not just <code>A</code>. Missing that term meant the simulation ran without errors, but produced physically wrong deflection behavior. Once I corrected <code>b(m)</code> to include both the time-stepping terms and the current-step spatial derivative, the deflection results matched expected beam behavior.</p>
       </div>
@@ -253,7 +253,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">09 · Results &amp; Lessons Learned</span>
       <h2>Results &amp; Lessons Learned</h2>
-      <p>This project was a deep dive into applying numerical methods to a real physical system, rather than an idealized textbook case. Solving the inverse problem — finding geometry from a target frequency, instead of the more standard forward calculation — pushed the numerical methods (Newton-Raphson, finite difference) harder than a simpler simulation would have.</p>
+      <p>This project strengthened my understanding of structural dynamics, numerical methods, and computational modeling. Implementing both Newton-Raphson root finding and finite difference time integration demonstrated how analytical equations can be translated into engineering simulation tools. It also reinforced the importance of validating numerical results against physical behavior rather than relying solely on successful code execution.</p>
       <p>Automating the pipeline end-to-end — from <code>Summary.m</code> and <code>Products.m</code>'s dimension/cost calculations, through the mode shape and dynamic solvers, to CSV export — also reinforced the value of building reusable tools rather than one-off scripts for a single configuration. And the <code>b(m)</code> bug was a good reminder to validate numerical results against physical expectations, not just against successful execution.</p>
     </div>
 
