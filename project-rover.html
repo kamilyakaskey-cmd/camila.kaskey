@@ -161,8 +161,8 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">05 · Finite Element Analysis</span>
       <h2>Finite Element Analysis</h2>
-      <p>Before manufacturing, I ran finite element analysis on the custom-designed components to evaluate their structural behavior under load. For the tread pin, this meant examining stress distribution and deformation to understand how the part would behave mechanically once installed in the track system.</p>
-      <p>The structural side plate was analyzed for both stress and displacement, which helped identify areas of higher stress concentration and gave a sense of how the geometry would deflect under load — informing decisions before committing the design to print.</p>
+      <p>Before manufacturing, I used finite element analysis (FEA) to evaluate the structural performance of the custom-designed components. Running simulations before printing helped identify potential stress concentrations and deformation early in the design process, reducing unnecessary prototype iterations.</p>
+      <p>The tread pin was analyzed to evaluate stress distribution under load, while the structural side plate was evaluated for both stress and displacement. These analyses helped validate the designs and guided refinements before manufacturing.</p>
       <div class="figure-row-3">
         <figure>
           <img src="tread_pin_fea.jpg" alt="FEA stress analysis of the tread pin" style="width:100%;border-radius:2px;">
@@ -182,8 +182,8 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">06 · Prototype Manufacturing</span>
       <h2>Prototype Manufacturing</h2>
-      <p>The drivetrain went through multiple 3D-printed prototype iterations. The earliest fully assembled prototype (shown in white) was used to verify component fit, check clearances, and validate the overall geometry — surfacing design issues early, before investing time in further refinement.</p>
-      <p>A later prototype (shown in red) reflected structural refinements and better integration between subsystems, and served as a further assembly validation step on the way to the final rover.</p>
+      <p>The drivetrain was developed through multiple prototype iterations, with each version used to evaluate and refine the design before the next iteration. Rather than aiming for a final design immediately, each prototype served as an opportunity to identify issues, refine components, and validate design decisions through physical testing.</p>
+      <p>The first assembled prototype was primarily used to verify component fit, assembly, and overall geometry. Feedback from the first prototype guided the next design iteration, with components being redesigned, reprinted, and integrated into a second prototype featuring structural refinements and improved subsystem integration. This iterative process resulted in a more reliable drivetrain before the final rover assembly.</p>
       <div class="figure-row">
         <figure>
           <img src="prototype_white.jpg" alt="First fully assembled drivetrain prototype" style="width:100%;border-radius:2px;">
@@ -200,28 +200,185 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       </figure>
     </div>
 
-    <div class="section">
-      <span class="cat-label">07 · Mechanical Testing</span>
-      <h2>Mechanical Testing</h2>
-      <p>Mechanical testing made up the largest share of the work on this project, and I served as testing lead for the rover as a whole — not just the drivetrain. That meant evaluating both material choices and mechanical performance across every part of the rover, not any single component in isolation.</p>
-      <p>On the materials side, I tested a range of candidate filaments for the rover's 3D-printed parts, including PETG, PETG-F15, PLA, PLA+, TPU85A, and TPU95A, to understand how each performed for different components depending on whether a part needed rigidity, flexibility, or durability under repeated load.</p>
-      <p>On the mechanical side, I ran movement and mobility testing across the rover's parts more broadly, including the sand testbed trials for the tread system. For the tread specifically, I evaluated multiple patterns across repeated trials, comparing travel distance under constant motor torque. A W-shaped tread pattern consistently produced the best performance, with the highest average travel distance (3.88m) across trials, and was selected as the final design.</p>
-      <p>This process reinforced how much physical testing shapes a mechanical design — several refinements to material choices, track geometry, and the drivetrain assembly came directly out of what was learned through hands-on testing, rather than from CAD or analysis alone.</p>
-      <figure>
-        <img src="sand_testing.jpg" alt="The rover being tested in the sand testbed" style="width:100%;border-radius:2px;">
-        <figcaption>Sand testbed trials, used to evaluate tracked mobility and traction across tread designs.</figcaption>
-      </figure>
-    </div>
+   <div class="section">
+  <span class="cat-label">07 · Mechanical Testing</span>
+  <h2>Mechanical Testing & Validation</h2>
 
-    <div class="section">
-      <span class="cat-label">08 · System Integration</span>
-      <h2>System Integration</h2>
-      <p>After the mechanical systems were completed, the rover underwent system-level integration testing, including validation of the onboard camera system. I did not design the camera itself — this stage was about confirming that the vision system functioned correctly once integrated with the completed mechanical platform.</p>
-      <figure>
-        <img src="camera_testing.jpg" alt="Onboard camera feed during integration testing" style="width:100%;border-radius:2px;">
-        <figcaption>Onboard camera feed during system integration testing.</figcaption>
-      </figure>
-    </div>
+  <p>
+    Mechanical testing made up the largest share of my contribution to this project.
+    As the rover's Mechanical Testing Lead, I helped develop and carry out standardized
+    testing procedures for structural components, drivetrain systems, electronics, and
+    integrated rover performance. The goal was to support design decisions with measured
+    data rather than relying only on CAD models or visual inspection.
+  </p>
+
+  <p>
+    Testing was conducted on individual components and dedicated test setups before final
+    integration. Most procedures used controlled mounting conditions, fixed loads or motor
+    inputs, repeated trials, and quantitative measurements such as deflection, displacement,
+    current draw, free-spin time, temperature, signal range, and traction performance.
+  </p>
+
+  <h3>Material & Structural Testing</h3>
+
+  <p>
+    Material selection was based on the function of each component rather than using one
+    filament throughout the rover. I evaluated PETG, PET-GF15, PLA, PLA+, TPU85A, and TPU95A
+    to compare rigidity, flexibility, durability, and resistance to deformation.
+  </p>
+
+  <p>
+    Structural components including the rover arm, scoop, cross-members, brackets, and
+    payload rack were mounted under identical conditions and tested using controlled static
+    loads. For many tests, a 0.5 kg load was applied for 10 seconds across five trials, and
+    maximum deflection was measured relative to the unloaded position. The payload rack was
+    similarly tested using a 1.0 kg load to evaluate its ability to support external weight
+    without excessive bending.
+  </p>
+
+  <p>
+    These results guided the use of PET-GF15 and PLA+ for rigid structural parts, while TPU
+    was reserved for components that benefited from controlled flexibility, vibration
+    mitigation, or tolerance for minor misalignment.
+  </p>
+
+  <h3>Drivetrain Testing</h3>
+
+  <p>
+    Drivetrain testing evaluated traction, slip, motor performance, and rotational
+    efficiency. Multiple tread configurations were tested on loose terrain under controlled
+    motor conditions, with five trials completed for each design. Slip was calculated by
+    comparing the rover's actual travel distance with the expected distance based on motor
+    rotation, while additional weight was introduced to evaluate load-carrying performance
+    and resistance to sinking.
+  </p>
+
+  <p>
+    Separate tread-pattern testing compared repeated travel distances under constant motor
+    torque. The W-shaped tread pattern produced the highest average travel distance of
+    <strong>3.88 m</strong> and was selected for the final drivetrain design.
+  </p>
+
+  <p>
+    Bearing configurations were also evaluated using a dedicated motor-driven rig. Each
+    bearing was accelerated at approximately 6000 rpm using a 3S, 11.1 V setup, after which
+    the motor input was removed and the bearing's free-spin time was measured. Longer spin
+    times indicated lower internal friction and greater rotational efficiency.
+  </p>
+
+  <p>
+    Motor testing examined how current draw changed under increasing load torque. The motor
+    was operated at 12 V while controlled resistance was applied to the output shaft.
+    Current was recorded after steady operation was reached, allowing motor behavior and
+    electrical demand to be compared across loading conditions.
+  </p>
+
+  <h3>Component Performance Testing</h3>
+
+  <p>
+    Several rover components were tested using purpose-built fixtures. One example was the
+    scoop testing setup, which used a wooden jig, fishing line, and a digital force scale to
+    pull different scoop geometries through sand. Each design was tested through ten
+    repetitions, and the stabilized kinetic friction force was compared with the scoop's
+    surface area obtained from Fusion 360.
+  </p>
+
+  <p>
+    This testing allowed the scoop geometry to be refined using measured resistance rather
+    than appearance alone. Similar component-level testing was used to evaluate structural
+    brackets, chassis members, payload supports, and other assemblies before they were
+    incorporated into the completed rover.
+  </p>
+
+  <h3>Electronics & Reliability Testing</h3>
+
+  <p>
+    Testing also extended beyond the rover's printed mechanical components. Electronic
+    temperatures were recorded over a 10-minute operating period using a thermistor recovered
+    from 3D-printer hardware, an Arduino, and a custom data-collection application built in
+    Processing. The results were used to determine whether additional cooling was required
+    and to compare different fan configurations.
+  </p>
+
+  <p>
+    Camera transmitter range was tested outdoors by measuring the maximum distance at which
+    a usable video signal could be maintained. The procedure was repeated under multiple
+    obstruction conditions, including an unobstructed path, behind a curtain, and behind a
+    wall, to evaluate signal degradation.
+  </p>
+
+  <p>
+    The camera gimbal was also evaluated through repeated work-cycle testing. A work cycle
+    was defined as a complete 180-degree sweep of both servos under nominal load, allowing
+    servo durability, voltage-dependent performance, and cooling requirements to be assessed
+    under repeated operation.
+  </p>
+
+  <h3>Testing Outcomes</h3>
+
+  <p>
+    The testing program produced more than 40 pages of procedures, results, tables, and
+    engineering conclusions within the team's technical report. Results directly influenced
+    material selection, tread geometry, scoop design, bearing configuration, cooling
+    strategy, structural reinforcement, and overall rover reliability.
+  </p>
+
+  <p>
+    The most important outcome was not simply confirming that the rover worked. Testing
+    repeatedly exposed weaknesses that were not obvious in CAD, allowing components to be
+    redesigned, reprinted, and validated before final integration.
+  </p>
+
+  <figure>
+    <img
+      src="sand_testing.jpg"
+      alt="The rover being tested in a sand testbed"
+      style="width:100%;border-radius:2px;"
+    >
+    <figcaption>
+      Sand testbed trials used to compare tracked mobility, slip, traction, and travel
+      performance across tread designs.
+    </figcaption>
+  </figure>
+</div>
+
+<div class="section">
+  <span class="cat-label">08 · System Integration</span>
+  <h2>System Integration</h2>
+
+  <p>
+    After individual mechanical and electronic systems were tested, the rover underwent
+    system-level integration to confirm that the subsystems performed correctly when
+    assembled into the complete platform. This stage included drivetrain alignment,
+    structural fit, payload support, camera operation, cooling performance, and communication
+    reliability.
+  </p>
+
+  <p>
+    I did not design every subsystem shown in this stage. My role focused on validating how
+    those systems interacted with the completed mechanical platform and identifying problems
+    that appeared only after integration, such as interference, vibration, misalignment,
+    excessive temperature, or inconsistent movement.
+  </p>
+
+  <p>
+    Integration testing connected the results of the earlier component tests with the rover's
+    final operating behavior. Changes made during this stage were based on the same iterative
+    process used throughout the project: assemble, test, document, refine, and test again.
+  </p>
+
+  <figure>
+    <img
+      src="camera_testing.jpg"
+      alt="Onboard camera feed during rover system integration testing"
+      style="width:100%;border-radius:2px;"
+    >
+    <figcaption>
+      Onboard camera feed used to verify video transmission and system operation after
+      integration with the completed rover.
+    </figcaption>
+  </figure>
+</div>
 
     <div class="section">
       <span class="cat-label">09 · Final Rover</span>
