@@ -47,9 +47,10 @@ main{ padding: 40px 0 100px; }
 h1{ font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.7rem); line-height: 1.15; }
 .lede{ margin-top: 18px; color: var(--ink); max-width: 60ch; margin-left:auto; margin-right:auto; font-size: 1.05rem; }
 
-.hero-photo{ margin: 0 -28px 50px; }
-.hero-photo figcaption{ font-style: italic; font-size: 0.88rem; text-align:center; margin-top: 10px; padding: 0 28px; }
-
+.overview-photo{ max-width: 420px; margin: 0 auto 50px; }
+.overview-photo img{ width:100%; border-radius: 4px; border: 1px solid var(--line); }
+.overview-photo figcaption{ font-style: italic; font-size: 0.88rem; text-align:center; margin-top: 10px; }
+  
 .section{ padding: 46px 0; border-top: 1px solid var(--line); }
 .section:first-of-type{ border-top: none; }
 .cat-label{
@@ -108,9 +109,9 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     </div>
   </div>
 
-  <figure class="hero-photo">
-    <img src="sand_testing.jpg" alt="The completed rover undergoing mobility testing in a sand testbed" style="width:100%;border-radius:2px;">
-    <figcaption class="wrap">The rover during mobility testing in the sand testbed.</figcaption>
+  <figure class="overview-photo">
+    <img src="completed_rover.jpg" alt="The completed rover after mechanical integration">
+    <figcaption>The completed rover.</figcaption>
   </figure>
 
   <div class="wrap">
