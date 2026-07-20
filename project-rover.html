@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rover Tank Tread Drivetrain — Camila Kaskey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #FFFFFF;
+  --ink: #222222;
+  --line: #E4E4E2;
+  --accent: #3A5A50;
+  --serif: 'Lora', serif;
+  --sans: 'Inter', sans-serif;
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a{ color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
+a:hover{ text-decoration-color: var(--ink); }
+img{ max-width:100%; display:block; }
+.wrap{ max-width: 780px; margin:0 auto; padding: 0 28px; }
+em{ font-style: italic; }
+
+.topbar{ padding: 26px 0 20px; text-align:center; border-bottom: 1px solid var(--line); }
+.brand{ font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.02em; text-decoration:none; display:block; margin-bottom: 16px; color: var(--ink); }
+nav.main-nav{ display:flex; gap: 26px; justify-content:center; flex-wrap: wrap; margin-bottom: 14px; }
+nav.main-nav a{ font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; text-decoration:none; color: var(--ink); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: border-color .15s ease; }
+nav.main-nav a:hover, nav.main-nav a.active{ border-color: var(--ink); }
+.social-icons{ display:flex; gap: 16px; justify-content:center; }
+.social-icons a{ color: var(--ink); text-decoration:none; }
+.social-icons svg{ width: 16px; height: 16px; }
+
+.back-link{ display:block; text-align:center; margin-top: 26px; font-size: 0.85rem; }
+
+main{ padding: 40px 0 100px; }
+.hero-head{ text-align:center; margin-bottom: 40px; }
+.eyebrow{ font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+h1{ font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.7rem); line-height: 1.15; }
+.lede{ margin-top: 18px; color: var(--ink); max-width: 60ch; margin-left:auto; margin-right:auto; font-size: 1.05rem; }
+
+.hero-photo{ margin: 0 -28px 50px; }
+.hero-photo figcaption{ font-style: italic; font-size: 0.88rem; text-align:center; margin-top: 10px; padding: 0 28px; }
+
+.section{ padding: 46px 0; border-top: 1px solid var(--line); }
+.section:first-of-type{ border-top: none; }
+.cat-label{
+  display:inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.1em; background: #F2F1ED; color: var(--ink);
+  padding: 5px 12px; margin-bottom: 18px;
+}
+.section h2{ font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin-bottom: 16px; }
+.section p{ margin-bottom: 14px; max-width: 68ch; }
+.section p:last-child{ margin-bottom: 0; }
+
+figure{ margin: 24px 0; }
+figcaption{ font-style: italic; font-size: 0.88rem; color: var(--ink); margin-top: 10px; }
+.figure-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.figure-row figure{ margin:0; }
+.figure-row-3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.figure-row-3 figure{ margin:0; }
+@media (max-width: 700px){
+  .figure-row, .figure-row-3{ grid-template-columns: 1fr; }
+}
+
+footer{ border-top: 1px solid var(--line); padding: 34px 0; }
+.footer-inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
+.footer-nav{ font-size: 0.82rem; }
+.footer-nav a{ text-decoration:none; color: var(--ink); }
+.footer-nav .sep{ color: var(--line); margin: 0 8px; }
+.footer-bottom{ font-size: 0.78rem; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="index.html">Camila Kaskey — Mechanical Engineering Student</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="social-icons">
+    <a href="https://linkedin.com/in/camila-kaskey-653ba1385" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.75h4V23h-4V8.75zM8.5 8.75h3.83v1.95h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.42c0-1.53-.03-3.5-2.13-3.5-2.14 0-2.47 1.67-2.47 3.39V23h-4V8.75z"/></svg>
+    </a>
+    <a href="mailto:kamilyak@buffalo.edu" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+    </a>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="eyebrow">Fusion 360 · 3D Printing · Mechanical Design</div>
+      <h1>Rover Tank Tread Drivetrain</h1>
+      <p class="lede">A modular, 3D-printed tracked drivetrain designed and built for an ASME competition rover — developed through repeated CAD iteration, structural analysis, prototyping, and hands-on mechanical testing.</p>
+    </div>
+  </div>
+
+  <figure class="hero-photo">
+    <img src="images/rover/sand_testing.jpg" alt="The completed rover undergoing mobility testing in a sand testbed" style="width:100%;border-radius:2px;">
+    <figcaption class="wrap">The rover during mobility testing in the sand testbed.</figcaption>
+  </figure>
+
+  <div class="wrap">
+
+    <div class="section">
+      <span class="cat-label">01 · Project Overview</span>
+      <h2>Overview</h2>
+      <p>This project involved the mechanical design and development of a tracked drivetrain system for an ASME competition rover. The goal was to create a modular, 3D-printable track system capable of reliable mobility over loose, uneven terrain.</p>
+      <p>I was responsible for both the mechanical design and the mechanical testing of the system. As testing lead, my scope covered the entire rover — evaluating materials and mobility performance across all of its parts, not just the drivetrain. This page walks through that full process, from initial design to final testing.</p>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">02 · Mechanical Design</span>
+      <h2>Mechanical Design Approach</h2>
+      <p>The drivetrain needed to balance a few competing goals: enough structural rigidity to survive repeated mechanical loading, a geometry that could be reliably manufactured through 3D printing, and a track system that could maintain traction on loose terrain like sand.</p>
+      <p>Rather than designing the drivetrain as a single fixed unit, I approached it as a set of modular components — track links, sprockets, a structural frame, and connecting hardware — that could each be iterated on independently as testing revealed where improvements were needed.</p>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">03 · CAD Development</span>
+      <h2>CAD Development</h2>
+      <p>The full drivetrain assembly was modeled in Fusion 360, including the drive and idler sprockets, the structural frame, and the individual track links. This top-down assembly view shows the overall track layout and drivetrain geometry that the rest of the system was built around.</p>
+      <figure>
+        <img src="images/rover/drivetrain_cad_top.jpg" alt="Top-view CAD assembly of the drivetrain showing sprockets, frame, and track links" style="width:100%;border-radius:2px;">
+        <figcaption>Top view of the drivetrain CAD assembly — track layout, drive/idler sprockets, structural frame, and track links.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">04 · Structural Component Design</span>
+      <h2>Structural Component Design</h2>
+      <p>Beyond the overall drivetrain assembly, I designed individual structural components to address specific mechanical requirements. A structural side plate was developed to support multiple drivetrain elements and contribute to the overall rigidity of the chassis. I also designed a custom tread pin, which connects the track system and helps maintain alignment between track components.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="images/rover/side_plate_cad.jpg" alt="CAD render of the structural side plate" style="width:100%;border-radius:2px;">
+          <figcaption>Structural side plate, designed to support drivetrain components and reinforce the chassis.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rover/tread_pin_cad.jpg" alt="CAD render of the custom tread pin" style="width:100%;border-radius:2px;">
+          <figcaption>Custom tread pin, connecting track links and maintaining alignment between components.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">05 · Finite Element Analysis</span>
+      <h2>Finite Element Analysis</h2>
+      <p>Before manufacturing, I ran finite element analysis on the custom-designed components to evaluate their structural behavior under load. For the tread pin, this meant examining stress distribution and deformation to understand how the part would behave mechanically once installed in the track system.</p>
+      <p>The structural side plate was analyzed for both stress and displacement, which helped identify areas of higher stress concentration and gave a sense of how the geometry would deflect under load — informing decisions before committing the design to print.</p>
+      <div class="figure-row-3">
+        <figure>
+          <img src="images/rover/tread_pin_fea.jpg" alt="FEA stress analysis of the tread pin" style="width:100%;border-radius:2px;">
+          <figcaption>Tread pin — stress analysis.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rover/side_plate_fea_stress.jpg" alt="FEA stress analysis of the structural side plate" style="width:100%;border-radius:2px;">
+          <figcaption>Side plate — stress distribution.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rover/side_plate_fea_disp.jpg" alt="FEA displacement analysis of the structural side plate" style="width:100%;border-radius:2px;">
+          <figcaption>Side plate — displacement analysis.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">06 · Prototype Manufacturing</span>
+      <h2>Prototype Manufacturing</h2>
+      <p>The drivetrain went through multiple 3D-printed prototype iterations. The earliest fully assembled prototype (shown in white) was used to verify component fit, check clearances, and validate the overall geometry — surfacing design issues early, before investing time in further refinement.</p>
+      <p>A later prototype (shown in red) reflected structural refinements and better integration between subsystems, and served as a further assembly validation step on the way to the final rover.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="images/rover/prototype_white.jpg" alt="First fully assembled drivetrain prototype" style="width:100%;border-radius:2px;">
+          <figcaption>First fully assembled drivetrain prototype — used to verify fit and clearances.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rover/prototype_red_wide.jpg" alt="Later drivetrain prototype with structural refinements" style="width:100%;border-radius:2px;">
+          <figcaption>A later prototype iteration, reflecting structural refinements and improved subsystem integration.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="images/rover/prototype_red_detail.jpg" alt="Detail view of the refined drivetrain prototype" style="width:100%;border-radius:2px;">
+        <figcaption>Detail view of the refined prototype, showing the drivetrain and track assembly.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">07 · Mechanical Testing</span>
+      <h2>Mechanical Testing</h2>
+      <p>Mechanical testing made up the largest share of the work on this project, and I served as testing lead for the rover as a whole — not just the drivetrain. That meant evaluating both material choices and mechanical performance across every part of the rover, not any single component in isolation.</p>
+      <p>On the materials side, I tested a range of candidate filaments for the rover's 3D-printed parts, including PETG, PETG-F15, PLA, PLA+, TPU85A, and TPU95A, to understand how each performed for different components depending on whether a part needed rigidity, flexibility, or durability under repeated load.</p>
+      <p>On the mechanical side, I ran movement and mobility testing across the rover's parts more broadly, including the sand testbed trials for the tread system. For the tread specifically, I evaluated multiple patterns across repeated trials, comparing travel distance under constant motor torque. A W-shaped tread pattern consistently produced the best performance, with the highest average travel distance (3.88m) across trials, and was selected as the final design.</p>
+      <p>This process reinforced how much physical testing shapes a mechanical design — several refinements to material choices, track geometry, and the drivetrain assembly came directly out of what was learned through hands-on testing, rather than from CAD or analysis alone.</p>
+      <figure>
+        <img src="images/rover/sand_testing.jpg" alt="The rover being tested in the sand testbed" style="width:100%;border-radius:2px;">
+        <figcaption>Sand testbed trials, used to evaluate tracked mobility and traction across tread designs.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">08 · System Integration</span>
+      <h2>System Integration</h2>
+      <p>After the mechanical systems were completed, the rover underwent system-level integration testing, including validation of the onboard camera system. I did not design the camera itself — this stage was about confirming that the vision system functioned correctly once integrated with the completed mechanical platform.</p>
+      <figure>
+        <img src="images/rover/camera_testing.jpg" alt="Onboard camera feed during integration testing" style="width:100%;border-radius:2px;">
+        <figcaption>Onboard camera feed during system integration testing.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">09 · Final Rover</span>
+      <h2>Final Rover</h2>
+      <p>After multiple design iterations, the completed mechanical platform brought together the integrated drivetrain, track system, payload mounting, and onboard electronics into a single working rover.</p>
+      <figure>
+        <img src="images/rover/completed_rover.jpg" alt="The completed rover after mechanical integration" style="width:100%;border-radius:2px;">
+        <figcaption>The completed rover, with drivetrain, track system, payload mounting, and electronics integrated.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">10 · Results &amp; Lessons Learned</span>
+      <h2>Results &amp; Lessons Learned</h2>
+      <p>This project reinforced the value of an iterative design process — moving repeatedly between CAD, analysis, prototyping, and physical testing rather than treating any one of those steps as a final answer. Simulation and analysis were useful for catching issues early, but the sand testbed trials consistently revealed behavior that was difficult to predict on the design side alone, particularly around traction and tread geometry.</p>
+      <p>Working through multiple prototype iterations also underscored the importance of designing for manufacturability from the start, since small changes to fit and tolerance had outsized effects on assembly and performance once printed. Overall, this project was as much about building a disciplined testing and iteration process as it was about the final drivetrain design itself.</p>
+    </div>
+
+    <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-nav">
+      <a href="index.html">Home</a><span class="sep">|</span>
+      <a href="portfolio.html">Portfolio</a><span class="sep">|</span>
+      <a href="resume.html">Resume</a><span class="sep">|</span>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-bottom">© 2026 Camila Kaskey</div>
+  </div>
+</footer>
+
+</body>
+</html>
