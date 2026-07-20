@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tuning Fork Vibrational Analysis — Camila Kaskey</title>
+<title>Tuning Fork Vibrations Simulator — Camila Kaskey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -12,7 +12,6 @@
   --ink: #222222;
   --line: #E4E4E2;
   --accent: #3A5A50;
-  --accent-tint: #EAF0EC;
   --serif: 'Lora', serif;
   --sans: 'Inter', sans-serif;
   --mono: 'IBM Plex Mono', monospace;
@@ -66,20 +65,26 @@ h1{ font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.7
 .section h3:first-of-type{ margin-top: 0; }
 .section p{ margin-bottom: 14px; max-width: 68ch; }
 .section p:last-child{ margin-bottom: 0; }
-.section ul, .section ol{ margin: 14px 0 14px 20px; max-width: 68ch; }
+.section ul{ margin: 14px 0 14px 20px; max-width: 68ch; }
 .section li{ margin-bottom: 8px; }
+
+.formula-block{
+  font-family: var(--mono); font-size: 0.92rem; background: #F8F8F6; border: 1px solid var(--line);
+  border-radius: 4px; padding: 16px 20px; margin: 18px 0; overflow-x: auto; white-space: nowrap;
+}
+.formula-label{ font-family: var(--sans); font-size: 0.78rem; color: var(--ink); opacity: 0.6; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
 
 .script-card{ border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; margin-bottom: 14px; }
 .script-card .fname{ font-family: var(--mono); font-weight: 500; font-size: 0.95rem; color: var(--accent); }
-.script-card p{ margin-top: 8px; margin-bottom: 8px; font-size: 0.95rem; }
-.script-card ul{ margin: 8px 0 0 18px; }
-.script-card li{ margin-bottom: 4px; font-size: 0.95rem; }
+.script-card p{ margin-top: 8px; margin-bottom: 0; font-size: 0.95rem; }
 
 figure{ margin: 24px 0; }
 figcaption{ font-style: italic; font-size: 0.88rem; color: var(--ink); margin-top: 10px; }
 
-.tag-row{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 8px; }
-.tag{ font-size: 0.82rem; padding: 5px 12px; background: var(--accent-tint); color: var(--accent); border-radius: 20px; font-weight: 500; }
+.callout{
+  border-left: 3px solid var(--accent); padding: 4px 0 4px 18px; margin: 20px 0; max-width: 68ch;
+}
+.callout p{ margin-bottom: 0; }
 
 footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 .footer-inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
@@ -112,9 +117,9 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
 <main>
   <div class="wrap">
     <div class="hero-head">
-      <div class="eyebrow">MATLAB · Euler-Bernoulli Beam Theory · Numerical Simulation</div>
-      <h1>Tuning Fork Vibrational Analysis</h1>
-      <p class="lede">Modeling the vibration of a tuning fork using Euler-Bernoulli beam theory and custom numerical methods in MATLAB.</p>
+      <div class="eyebrow">MATLAB · Numerical Methods · Vibrations</div>
+      <h1>Tuning Fork Vibrations Simulator</h1>
+      <p class="lede">A MATLAB program that models tuning fork vibration using Euler-Bernoulli beam theory — computing mode shapes, natural frequencies, and dynamic beam deflection across materials and musical notes.</p>
     </div>
 
     <figure class="overview-photo">
@@ -123,177 +128,133 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     </figure>
 
     <div class="section">
-      <span class="cat-label">01 · Overview</span>
+      <span class="cat-label">01 · Project Overview</span>
       <h2>Overview</h2>
-      <p>This project models the vibration of a tuning fork using Euler-Bernoulli beam theory and numerical methods in MATLAB. The objective was to predict the behavior of a cantilevered tuning fork, calculate its natural vibration modes, simulate time-dependent motion, and determine the required dimensions for producing musical notes from A0 to A7 across multiple materials and cross-sectional geometries.</p>
-      <p>The project combined analytical mechanics with computational modeling, requiring the implementation of custom numerical algorithms rather than relying on built-in MATLAB toolboxes.</p>
+      <p>This project modeled and analyzed tuning forks using Euler-Bernoulli beam theory, treating each tine as a cantilevered beam — fixed at its base and free at the tip. The goal was to calculate the beam's vibrational modes, simulate how its deflection evolves over time, and determine what material and geometry a tuning fork would need to produce a specific musical pitch.</p>
+      <p>The program covered all eight notes from A0 to A7 (27.5–3520 Hz), across three materials — steel, brass, and aluminum — and two cross-sections — rectangular and circular.</p>
     </div>
 
     <div class="section">
-      <span class="cat-label">02 · Project Objectives</span>
-      <h2>Project Objectives</h2>
-      <ul>
-        <li>Model a tuning fork as a cantilevered beam</li>
-        <li>Calculate the first 12 natural vibration modes</li>
-        <li>Simulate dynamic beam deflection over time</li>
-        <li>Design tuning forks for musical notes A0–A7</li>
-        <li>Compare steel, brass, and aluminum designs</li>
-        <li>Estimate manufacturing dimensions and material costs</li>
-        <li>Export engineering results into formatted datasets</li>
-      </ul>
+      <span class="cat-label">02 · Theoretical Approach</span>
+      <h2>Theoretical Approach</h2>
+      <p>Each tuning fork tine is modeled as a cantilevered beam: fixed at <code>x = 0</code>, free at <code>x = L</code>. The beam's fundamental frequency is governed by:</p>
+      <div class="formula-block">
+        <div class="formula-label">Fundamental Frequency</div>
+        v = (z₁² / (2πL²)) × √(EI / (ρa))
+      </div>
+      <p>where <code>z₁</code> is the first root of the beam's characteristic equation, <code>E</code> is the material's modulus of elasticity, <code>I</code> is the second moment of area, <code>ρ</code> is density, and <code>a</code> is cross-sectional area.</p>
+      <p>The corresponding mode shapes come from the beam's eigenfunction equation:</p>
+      <div class="formula-block">
+        <div class="formula-label">Mode Shape (Equation 8)</div>
+        w_k(x) = [cosh(βx) − cos(βx)] + B_k[sin(βx) − sinh(βx)]
+      </div>
+      <p>with the coefficient <code>B_k</code> determined by the boundary conditions:</p>
+      <div class="formula-block">
+        <div class="formula-label">Mode Shape Coefficient</div>
+        B_k = [sin(βL) − sinh(βL)] / [cos(βL) + cosh(βL)]
+      </div>
     </div>
 
     <div class="section">
-      <span class="cat-label">03 · Engineering Concepts</span>
-      <h2>Engineering Concepts</h2>
-      <p>This project applies several fundamental topics in mechanical engineering:</p>
-      <ul>
-        <li>Euler-Bernoulli beam theory</li>
-        <li>Structural vibrations</li>
-        <li>Natural frequencies</li>
-        <li>Mode shapes</li>
-        <li>Numerical root-finding</li>
-        <li>Finite difference methods</li>
-        <li>Time-dependent dynamic simulation</li>
-        <li>Material property analysis</li>
-        <li>Engineering design optimization</li>
-      </ul>
+      <span class="cat-label">03 · Numerical Methods</span>
+      <h2>Numerical Methods</h2>
+      <p>The beam's characteristic equation, <code>cosh(z)cos(z) + 1 = 0</code>, has no closed-form solution for its roots. I used Newton-Raphson root-finding (implemented in <code>NewtRaph.m</code>) to solve for the first 12 values of <code>β</code>, which in turn gave the first 12 vibrational modes and natural frequencies.</p>
+      <p>For the time-dependent behavior, I used a finite difference method to discretize the beam equation spatially and step the solution forward in time, solving a linear system <code>Aw⁽ⁿ⁺¹⁾ = b</code> at each time step.</p>
+      <div class="formula-block">
+        <div class="formula-label">Finite Difference Coefficient</div>
+        coeff = (dt² × E × I) / (ρ × a × dx⁴)
+      </div>
     </div>
 
     <div class="section">
-      <span class="cat-label">04 · My Approach</span>
-      <h2>My Approach</h2>
-      <p>Rather than solving a single calculation, I built a collection of MATLAB programs that work together to analyze an entire tuning fork design. The workflow consisted of:</p>
-      <ol>
-        <li>Determining beam dimensions required for different musical frequencies.</li>
-        <li>Computing the first twelve vibration modes using Newton-Raphson root finding.</li>
-        <li>Constructing analytical mode shapes from the governing beam equations.</li>
-        <li>Solving the transient beam equation using a finite difference time-stepping method.</li>
-        <li>Comparing different materials and cross-sectional geometries.</li>
-        <li>Exporting the results into reusable engineering data tables.</li>
-      </ol>
-    </div>
-
-    <div class="section">
-      <span class="cat-label">05 · MATLAB Programs Developed</span>
-      <h2>MATLAB Programs Developed</h2>
+      <span class="cat-label">04 · Program Architecture</span>
+      <h2>Program Architecture</h2>
+      <p>The project was organized into five MATLAB scripts, each handling a distinct part of the analysis, reading from two shared data files: <code>materials.dat</code> (E, ρ, and cost per pound for steel, brass, and aluminum) and <code>arm_length.dat</code> (arm lengths for each of the eight notes A0–A7).</p>
 
       <h3>Summary.m</h3>
       <div class="script-card">
         <div class="fname">Summary.m</div>
-        <p>Calculated tuning fork dimensions and estimated material cost for every combination of:</p>
-        <ul>
-          <li>Steel, brass, and aluminum</li>
-          <li>Rectangular and circular cross-section</li>
-        </ul>
-        <p>The script generated a complete design summary for all musical notes from A0 through A7.</p>
+        <p>Displays the required tuning fork dimension (either arm thickness <code>h</code> for rectangular or radius <code>r</code> for circular) and material cost for each of the 8 musical notes, across every combination of steel/brass/aluminum and rectangular/circular cross-section.</p>
       </div>
 
       <h3>Products.m</h3>
       <div class="script-card">
         <div class="fname">Products.m</div>
-        <p>Expanded the design calculations by automatically exporting engineering data into six CSV files. Each file contains:</p>
-        <ul>
-          <li>Required beam dimensions</li>
-          <li>Estimated material cost</li>
-          <li>Four-decimal precision output</li>
-        </ul>
-        <p>This created reusable design tables suitable for additional engineering analysis.</p>
+        <p>Runs the same dimension and cost calculations as <code>Summary.m</code>, but exports the results to six CSV files (one per material/cross-section combination), each an 8×2 matrix of dimension and cost values to 4 decimal places, named <code>&lt;material&gt;_&lt;cross-section&gt;.csv</code>.</p>
       </div>
 
       <h3>VibrationalModes.m</h3>
       <div class="script-card">
         <div class="fname">VibrationalModes.m</div>
-        <p>Calculated the first 12 natural vibration modes of a cantilevered beam. The program:</p>
-        <ul>
-          <li>Solved the characteristic beam equation using Newton-Raphson iteration</li>
-          <li>Computed mode shape coefficients</li>
-          <li>Generated normalized mode shapes</li>
-          <li>Saved all calculated data for later simulations</li>
-        </ul>
+        <p>Calculates the first 12 vibrational modes of a 4-inch cantilevered beam using 201 spatial points, calling <code>NewtRaph.m</code> to solve for the 12 β roots. Produces the four-subplot mode shape figure (three modes per subplot) shown above, and saves the underlying <code>x</code>, <code>β</code>, and <code>W</code> data to <code>VibrationalModes.mat</code>.</p>
       </div>
 
       <h3>DynamicSolution.m</h3>
       <div class="script-card">
         <div class="fname">DynamicSolution.m</div>
-        <p>Simulated the vibration of a tuning fork over time. The program:</p>
-        <ul>
-          <li>Built a complete transient simulation</li>
-          <li>Tracked beam motion at multiple locations</li>
-          <li>Generated both spatial and time-history plots</li>
-          <li>Stored all simulation data for visualization</li>
-        </ul>
+        <p>Sets up a time-stepping simulation (301 time steps) at 440 Hz for a brass rectangular arm, calling the <code>Deflection</code> function to compute the beam's response over time. Produces two figures — a time series of deflection at the 1", 2", and 4" positions along the beam, and a spatial deflection plot at six time instants — and saves the results to <code>DynamicSolution.mat</code>.</p>
       </div>
 
       <h3>Deflection.m</h3>
       <div class="script-card">
         <div class="fname">Deflection.m</div>
-        <p>Implemented the numerical solver used throughout the project. The function solved the beam equation using a finite difference formulation by repeatedly solving the governing linear system at each time step. This was the core computational component responsible for the transient vibration simulation.</p>
+        <p>The core finite difference function, implementing the beam equation's time-stepping scheme. Takes nine inputs — initial deflection, material and geometric properties, spatial and time step sizes, and the number of spatial and time points — and returns the full deflection matrix over space and time.</p>
       </div>
     </div>
 
     <div class="section">
-      <span class="cat-label">06 · Numerical Methods</span>
-      <h2>Numerical Methods</h2>
-      <p>Several numerical techniques were implemented during the project:</p>
-      <ul>
-        <li>Newton-Raphson root finding</li>
-        <li>Finite difference discretization</li>
-        <li>Matrix-based linear system solving</li>
-        <li>Time integration</li>
-        <li>Spatial discretization</li>
-        <li>Numerical approximation of fourth-order beam derivatives</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="cat-label">07 · Results</span>
-      <h2>Results</h2>
-      <p>The simulations successfully reproduced the expected behavior of a vibrating cantilever beam. Key outcomes included:</p>
-      <ul>
-        <li>First 12 vibration modes calculated</li>
-        <li>Dynamic beam deflection simulated over time</li>
-        <li>Design dimensions generated for musical notes A0–A7</li>
-        <li>Material comparison for steel, brass, and aluminum</li>
-        <li>Manufacturing cost estimates</li>
-        <li>Automated engineering data export</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="cat-label">08 · Vibrational Mode Shapes</span>
+      <span class="cat-label">05 · Vibrational Mode Shapes</span>
       <h2>Vibrational Mode Shapes</h2>
+      <p>Using the Newton-Raphson roots and the mode shape equation, the program computed the first 12 vibrational mode shapes of the beam. The progression from broad, single-curve shapes in modes 1–3 to tightly oscillating shapes in modes 10–12 reflects the increasing number of nodes at higher mode numbers.</p>
       <figure>
         <img src="tuningfork_modes.jpg" alt="Vibrational mode shapes of a cantilevered beam, modes 1 through 12, grouped into four subplots">
-        <figcaption>The first twelve vibration modes of the cantilevered beam. As the mode number increases, the beam develops additional nodes and exhibits progressively more complex deformation patterns. These mode shapes form the foundation for understanding the dynamic behavior of the tuning fork.</figcaption>
+        <figcaption>Normalized mode shapes 1–12 for the 4-inch cantilevered beam, grouped in sets of three.</figcaption>
       </figure>
     </div>
 
     <div class="section">
-      <span class="cat-label">09 · Time-Dependent Beam Deflection</span>
-      <h2>Time-Dependent Beam Deflection</h2>
+      <span class="cat-label">06 · Dynamic Deflection Simulation</span>
+      <h2>Dynamic Deflection Simulation</h2>
+      <p><code>DynamicSolution.m</code> simulated a brass rectangular arm vibrating at 440 Hz over 301 time steps. The plot below shows the beam's spatial deflection profile at six time instants, illustrating how deflection magnitude decreases over the simulated window and how curvature concentrates increasingly near the fixed end as the vibration progresses.</p>
       <figure>
         <img src="tuningfork_deflection.jpg" alt="Spatial deflection of the beam plotted at different time instants">
-        <figcaption>Transient beam deflection at multiple time instants during vibration. The simulation illustrates how displacement evolves along the beam length while maintaining the fixed boundary condition at the base and maximum motion near the free end.</figcaption>
+        <figcaption>Spatial deflection of the brass rectangular arm at successive time instants during the 440 Hz simulation.</figcaption>
       </figure>
     </div>
 
     <div class="section">
-      <span class="cat-label">10 · Skills Demonstrated</span>
-      <h2>Skills Demonstrated</h2>
-      <div class="tag-row">
-        <span class="tag">MATLAB</span>
-        <span class="tag">Engineering Mathematics</span>
-        <span class="tag">Numerical Methods</span>
-        <span class="tag">Structural Dynamics</span>
-        <span class="tag">Euler-Bernoulli Beam Theory</span>
-        <span class="tag">Finite Difference Methods</span>
-        <span class="tag">Newton-Raphson Method</span>
-        <span class="tag">Matrix Computation</span>
-        <span class="tag">Dynamic Simulation</span>
-        <span class="tag">Data Analysis</span>
-        <span class="tag">Scientific Visualization</span>
+      <span class="cat-label">07 · Design Formulas</span>
+      <h2>Design Formulas</h2>
+      <p>To determine what geometry a tuning fork needs to produce a target musical note, I solved the fundamental frequency equation backward for the beam's key dimension:</p>
+      <div class="formula-block">
+        <div class="formula-label">Rectangular Cross-Section</div>
+        h = (3ρ(2πfL²)² / (2Ez₁⁴))^(1/4) &nbsp; · &nbsp; I = 2h⁴/3 &nbsp; · &nbsp; a = 2h²
       </div>
+      <div class="formula-block">
+        <div class="formula-label">Circular Cross-Section</div>
+        r = (ρ(2πfL²)² / (Ez₁⁴))^(1/4) &nbsp; · &nbsp; I = πr⁴/4 &nbsp; · &nbsp; a = πr²
+      </div>
+      <p>Each target note's frequency was generated directly from musical pitch theory:</p>
+      <div class="formula-block">
+        <div class="formula-label">Musical Notes A0–A7</div>
+        A_p = 27.5 × 2^p &nbsp; for p = 0, 1, ..., 7
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">08 · A Debugging Story</span>
+      <h2>A Debugging Story</h2>
+      <div class="callout">
+        <p>The finite difference time-stepping scheme in <code>Deflection.m</code> solves <code>Aw⁽ⁿ⁺¹⁾ = b</code> at every time step. Early on, my <code>b(m)</code> vector only accounted for the time-stepping terms from the previous steps — but the scheme also needed the 4th spatial derivative contribution from the <em>current</em> time step folded into <code>b(m)</code> itself, not just <code>A</code>. Missing that term meant the simulation ran without errors, but produced physically wrong deflection behavior. Once I corrected <code>b(m)</code> to include both the time-stepping terms and the current-step spatial derivative, the deflection results matched expected beam behavior.</p>
+      </div>
+      <p>This was a useful reminder that a numerical scheme can run cleanly and still be wrong — the only way to catch it was checking the output against the physics I expected, not just checking that the code executed without errors.</p>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">09 · Results &amp; Lessons Learned</span>
+      <h2>Results &amp; Lessons Learned</h2>
+      <p>This project was a deep dive into applying numerical methods to a real physical system, rather than an idealized textbook case. Solving the inverse problem — finding geometry from a target frequency, instead of the more standard forward calculation — pushed the numerical methods (Newton-Raphson, finite difference) harder than a simpler simulation would have.</p>
+      <p>Automating the pipeline end-to-end — from <code>Summary.m</code> and <code>Products.m</code>'s dimension/cost calculations, through the mode shape and dynamic solvers, to CSV export — also reinforced the value of building reusable tools rather than one-off scripts for a single configuration. And the <code>b(m)</code> bug was a good reminder to validate numerical results against physical expectations, not just against successful execution.</p>
     </div>
 
     <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
