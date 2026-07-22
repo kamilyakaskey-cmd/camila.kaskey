@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Hamburger Flipper: Arduino-Controlled Detection & Flipping System — Camila Kaskey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #FFFFFF;
+  --ink: #222222;
+  --line: #E4E4E2;
+  --accent: #3A5A50;
+  --serif: 'Lora', serif;
+  --sans: 'Inter', sans-serif;
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a{ color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
+a:hover{ text-decoration-color: var(--ink); }
+img{ max-width:100%; display:block; }
+.wrap{ max-width: 780px; margin:0 auto; padding: 0 28px; }
+em{ font-style: italic; }
+
+.topbar{ padding: 26px 0 20px; text-align:center; border-bottom: 1px solid var(--line); }
+.brand{ font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.02em; text-decoration:none; display:block; margin-bottom: 16px; color: var(--ink); }
+nav.main-nav{ display:flex; gap: 26px; justify-content:center; flex-wrap: wrap; margin-bottom: 14px; }
+nav.main-nav a{ font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; text-decoration:none; color: var(--ink); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: border-color .15s ease; }
+nav.main-nav a:hover, nav.main-nav a.active{ border-color: var(--ink); }
+.social-icons{ display:flex; gap: 16px; justify-content:center; }
+.social-icons a{ color: var(--ink); text-decoration:none; }
+.social-icons svg{ width: 16px; height: 16px; }
+
+.back-link{ display:block; text-align:center; margin-top: 26px; font-size: 0.85rem; }
+
+main{ padding: 40px 0 100px; }
+.hero-head{ text-align:center; margin-bottom: 40px; }
+.eyebrow{ font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+h1{ font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.7rem); line-height: 1.15; }
+.lede{ margin-top: 18px; color: var(--ink); max-width: 60ch; margin-left:auto; margin-right:auto; font-size: 1.05rem; }
+
+.overview-photo{ max-width: 420px; margin: 0 auto 50px; }
+.overview-photo img{ width:100%; border-radius: 4px; border: 1px solid var(--line); }
+.overview-photo figcaption{ font-style: italic; font-size: 0.88rem; text-align:center; margin-top: 10px; }
+
+.section{ padding: 46px 0; border-top: 1px solid var(--line); }
+.section:first-of-type{ border-top: none; }
+.cat-label{
+  display:inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.1em; background: #F2F1ED; color: var(--ink);
+  padding: 5px 12px; margin-bottom: 18px;
+}
+.section h2{ font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin-bottom: 16px; }
+.section h3{ font-family: var(--serif); font-weight: 400; font-size: 1.15rem; margin: 22px 0 10px; }
+.section p{ margin-bottom: 14px; max-width: 68ch; }
+.section p:last-child{ margin-bottom: 0; }
+.section ol, .section ul{ margin: 0 0 14px 1.3em; max-width: 68ch; }
+.section li{ margin-bottom: 8px; }
+
+figure{ margin: 24px 0; }
+figcaption{ font-style: italic; font-size: 0.88rem; color: var(--ink); margin-top: 10px; }
+.figure-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.figure-row figure{ margin:0; }
+.figure-row-3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.figure-row-3 figure{ margin:0; }
+@media (max-width: 700px){
+  .figure-row, .figure-row-3{ grid-template-columns: 1fr; }
+}
+
+.placeholder-figure{
+  border: 1px dashed var(--line); border-radius: 4px; padding: 40px 20px; text-align:center;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: #999; background: #FAFAF8;
+}
+
+footer{ border-top: 1px solid var(--line); padding: 34px 0; }
+.footer-inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
+.footer-nav{ font-size: 0.82rem; }
+.footer-nav a{ text-decoration:none; color: var(--ink); }
+.footer-nav .sep{ color: var(--line); margin: 0 8px; }
+.footer-bottom{ font-size: 0.78rem; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="index.html">Camila Kaskey — Mechanical Engineering Student</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="social-icons">
+    <a href="https://linkedin.com/in/camila-kaskey-653ba1385" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.75h4V23h-4V8.75zM8.5 8.75h3.83v1.95h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.42c0-1.53-.03-3.5-2.13-3.5-2.14 0-2.47 1.67-2.47 3.39V23h-4V8.75z"/></svg>
+    </a>
+    <a href="mailto:kamilyak@buffalo.edu" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+    </a>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="eyebrow">Arduino · Mechatronics · 3D Printing</div>
+      <h1>Automated Hamburger Flipper: Detection, Probing &amp; Flipping System</h1>
+      <p class="lede">An independent engineering project built for Theta Tau's pledge process — a gantry-style machine that mounts over a grill, locates a patty using a laser sensor array, probes its internal temperature, and flips it automatically onto a plate.</p>
+    </div>
+  </div>
+
+  <figure class="overview-photo">
+    <img src="burger_flipper_gantry_overview.jpg" alt="The completed hamburger flipper gantry mounted over the grill cutout">
+    <figcaption>The gantry frame, mounted over a circular grill cutout with dual lead-screw axes.</figcaption>
+  </figure>
+
+  <div class="wrap">
+
+    <div class="section">
+      <span class="cat-label">01 · Project Overview</span>
+      <h2>Overview</h2>
+      <p>The Automated Hamburger Flipper was an independent project I designed and built between January and May 2025 as part of Theta Tau's pledge process, where I served as President of my pledge class. I led our 13-member class through several interdisciplinary engineering builds during that semester, and this project was my own contribution: a machine that mounts directly on top of a grill, locates a patty using an array of laser sensors, drives a temperature probe into the meat to monitor doneness, and uses a rotating spatula to flip the patty and eventually lift it off onto a plate.</p>
+      <p>The system combines mechanical design, embedded control, and sensor integration — Arduino-driven motor sequencing, 3D-printed structural components, and a threaded-rod drive system — into a single machine that had to operate reliably above an active heat source.</p>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">02 · Concept &amp; Detection Strategy</span>
+      <h2>Design Concept</h2>
+      <p>The core design challenge was locating a patty on the grill without any prior knowledge of its exact position, then reaching it with a probe and a spatula without interfering with the cooking surface. I settled on a gantry frame that spans the grill on four printed and metal rails, two per side, running along the perimeter. A pair of DC gearmotors drives lead screws along the X-axis, while a second pair drives the Y-axis, letting the carriage assembly reach any point over the circular cooking area.</p>
+      <p>Patty detection relies on a laser sensor array mounted along the X-axis rails, with each laser paired to a receiver roughly an inch apart from its neighbor. Each beam is assigned a position variable in inches. When a beam is interrupted — meaning the patty is blocking it from reaching its receiver — that beam's assigned position tells the X-axis motor where to stop and enter the grill along that column.</p>
+      <p>Once positioned in X, the probe carriage moves along its Y-axis screw and keeps advancing until it detects a sharp temperature change, which indicates it has reached the edge of the patty rather than the open grill surface. That transition is the cue for the Y-axis motor to stop advancing and hold the probe in place to begin reading internal temperature.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="burger_flipper_xdetection_diagram.png" alt="Diagram of the laser sensor array used for patty X-position detection">
+          <figcaption>Laser array concept: each beam corresponds to a fixed X position; an interrupted beam tells the carriage where to stop.</figcaption>
+        </figure>
+        <figure>
+          <img src="burger_flipper_probe_thermal_top.png" alt="Diagram of the Y-axis probe insertion logic based on temperature change">
+          <figcaption>The probe advances along Y until a temperature spike signals it has reached the patty.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">03 · CAD Development</span>
+      <h2>CAD Development</h2>
+      <p>I modeled the full gantry assembly in SolidWorks before building anything physically, which let me check rail spacing, carriage clearance, and range of motion across the full diameter of the grill before committing to a build. The model included the rail assemblies, the vertical carriage tower, the threaded-rod drive on the probe axis, and the spatula end-effector.</p>
+      <p>Two components got the most individual design attention: the rails and the spatula. Each rail was modeled as a 24-inch extruded channel with a rounded profile to house the drive rods and support the linear bearings; four of them run in pairs along each side of the grill. The spatula was designed as an L-shaped profile that spans the grill width, with a mounting hole at the bend that lets a motor rotate it to perform the actual flip.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="burger_flipper_gantry_cad.png" alt="SolidWorks render of the full gantry assembly">
+          <figcaption>Full gantry assembly — twin rail pairs, carriage tower, and threaded-rod drive.</figcaption>
+        </figure>
+        <figure>
+          <img src="burger_flipper_rail_orthographic.png" alt="Orthographic projection of the 24-inch rail channel">
+          <figcaption>Rail orthographic projection — a 24-inch channel housing the drive rod and linear bearings.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="burger_flipper_spatula_orthographic.png" alt="Orthographic projection of the L-shaped spatula design">
+        <figcaption>Spatula orthographic projection — the L-shaped profile that spans the grill and rotates to flip the patty.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">04 · Mechanical Build</span>
+      <h2>Fabrication &amp; Assembly</h2>
+      <p>The frame is built from plywood with a circular cutout sized to sit directly over the grill's cooking surface, reinforced with aluminum brackets at the rail mounts. I used skateboard-style bearings for the linear carriages riding along the threaded rods, since they were inexpensive, easy to source, and rigid enough for the loads involved. 3D-printed components handled the carriage blocks, motor mounts, and rail end caps, which let me iterate on fit quickly instead of machining new brackets for every adjustment.</p>
+      <p>Each axis is driven by a DC gearmotor turning a threaded rod, converting rotation into linear carriage motion. Getting consistent thread engagement across the full 24-inch rail span took some tuning — small misalignments between the rail and the rod caused binding, which I solved by loosening tolerances slightly at the printed carriage interfaces and confirming smooth travel across the whole range before mounting the frame permanently over the grill.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="burger_flipper_threaded_rod.jpg" alt="Threaded rod carriage assembly for one drive axis">
+          <figcaption>One completed carriage assembly — threaded rod, guide rod, and printed carriage block.</figcaption>
+        </figure>
+        <figure>
+          <img src="burger_flipper_carriage_bearing.jpg" alt="Skateboard-style bearing used in a carriage block">
+          <figcaption>A skateboard bearing pressed into a printed carriage block, used for smooth linear travel.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="burger_flipper_gantry_front.jpg" alt="Front view of the assembled gantry during build and testing">
+        <figcaption>The gantry mid-assembly, with rails, carriages, and drive motors installed above the grill cutout.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">05 · Sensing &amp; Control</span>
+      <h2>Sensing &amp; Temperature Monitoring</h2>
+      <p>Temperature sensing uses a DS18B20 waterproof digital probe, chosen for its wide range (-55°C to 125°C) and native compatibility with Arduino. Once the probe is inserted into the patty, it holds position and continuously reads temperature until the patty reaches 160°F, the standard safe internal temperature for ground beef, at which point the control logic retracts the probe out of the way of the spatula.</p>
+      <figure>
+        <div class="placeholder-figure">Photo: probe wired into the gantry assembly<br>— add image here —</div>
+        <figcaption>The DS18B20 temperature probe, wired for Arduino input.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">06 · Control Logic</span>
+      <h2>How It Operates</h2>
+      <p>The full sequence, programmed in Arduino, runs as follows:</p>
+      <ol>
+        <li>The laser sensor array detects the patty at a specific beam position along the X-axis.</li>
+        <li>The retracted probe moves along the Y-axis to that same X position, staying off to the side of the grill.</li>
+        <li>The spatula travels along its own rail to the same detected location.</li>
+        <li>The probe advances inward across the grill until it senses a sharp temperature change, indicating it has been inserted into the patty.</li>
+        <li>The probe holds position, monitoring temperature until the patty reaches 160°F.</li>
+        <li>The probe retracts to its home position, clearing the path for the spatula.</li>
+        <li>The spatula rotates, flipping the patty.</li>
+        <li>The probe reinserts into the patty to continue monitoring the second side.</li>
+        <li>Once the second side is done, the spatula performs a second flip — this time lifting the patty off the grill entirely and depositing it onto a plate.</li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">07 · Testing &amp; Results</span>
+      <h2>Testing &amp; Results</h2>
+      <p>After assembly, I tested the full sequence on the physical rig mounted over the grill: patty detection, probe insertion, temperature-triggered retraction, and the spatula flip. The system successfully detected a patty, drove the probe to insertion, and executed a flip in testing, validating the core mechanical and control approach end to end.</p>
+      <p>Getting there took iteration on both the mechanical and software sides — tuning motor timing and drive-rod tolerances so the carriages tracked accurately, and adjusting the temperature-change threshold used to detect probe insertion so it reliably distinguished the patty from the open grill surface.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="burger_flipper_rail_detail.jpg" alt="Detail view of a completed rail and carriage assembly">
+          <figcaption>Completed rail assembly, ready for final mounting over the grill.</figcaption>
+        </figure>
+        <figure>
+          <div class="placeholder-figure">Photo: patty flip test / final assembled unit<br>— add image here —</div>
+          <figcaption>The flipper mid-test, positioned over the grill.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">08 · Results &amp; Lessons Learned</span>
+      <h2>Results &amp; Lessons Learned</h2>
+      <p>This project pushed me to combine mechanical design, sensing, and embedded control into one working system, rather than treating them as separate problems. The laser-array detection approach turned out to be a reliable, low-cost way to localize an object without vision processing, and the thermal-gradient method for probe insertion solved patty-edge detection without needing a separate proximity sensor on that axis.</p>
+      <p>Running this alongside leading my pledge class also meant balancing hands-on fabrication time with the coordination, scheduling, and presentation work that came with the President role — twice-weekly technical progress presentations kept the build honest and on schedule, and ultimately every member of our 13-person pledge class completed the program on time.</p>
+    </div>
+
+    <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-nav">
+      <a href="index.html">Home</a><span class="sep">|</span>
+      <a href="portfolio.html">Portfolio</a><span class="sep">|</span>
+      <a href="resume.html">Resume</a><span class="sep">|</span>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-bottom">© 2026 Camila Kaskey</div>
+  </div>
+</footer>
+
+</body>
+</html>
