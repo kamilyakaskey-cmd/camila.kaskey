@@ -193,17 +193,14 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
         <figcaption>The gantry mid-assembly, with rails, carriages, and drive motors installed above the grill cutout.</figcaption>
       </figure>
     </div>
-    <figure>
-  <img src="burger_flipper_wiring_assembly.jpg" alt="Final wiring assembly for the hamburger flipper electronics">
-  <figcaption>Final wiring for the Arduino, motor drivers, and sensors before assembly.</figcaption>
-</figure>
+    
 
     <div class="section">
       <span class="cat-label">05 · Sensing &amp; Control</span>
       <h2>Sensing &amp; Temperature Monitoring</h2>
       <p>The system uses two sensing methods throughout the cooking process. A laser sensor array determines the patty's X-position by detecting which beam has been interrupted, allowing the carriage to move to the correct location. A DS18B20 waterproof digital temperature probe then monitors the patty's internal temperature. The sensor operates over a range of -55°C to 125°C and interfaces directly with the Arduino controller. Once inserted into the patty, it continuously measures the internal temperature until it reaches 160°F, at which point the control system retracts the probe to clear the path for the rotating spatula before the flipping sequence begins.</p>
         <figure>
-        <div class="placeholder-figure">Photo: probe wired into the gantry assembly<br>— add image here —</div>
+       <img src="burger_flipper_wiring_assembly.jpg" alt="Final wiring assembly for the hamburger flipper electronics">
         <figcaption>The DS18B20 temperature probe, wired for Arduino input.</figcaption>
       </figure>
     </div>
