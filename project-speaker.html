@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functional Bluetooth Subwoofer Speaker: Custom Enclosure &amp; Audio Electronics — Camila Kaskey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #FFFFFF;
+  --ink: #222222;
+  --line: #E4E4E2;
+  --accent: #3A5A50;
+  --serif: 'Lora', serif;
+  --sans: 'Inter', sans-serif;
+}
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a{ color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
+a:hover{ text-decoration-color: var(--ink); }
+img{ max-width:100%; display:block; }
+.wrap{ max-width: 780px; margin:0 auto; padding: 0 28px; }
+em{ font-style: italic; }
+.topbar{ padding: 26px 0 20px; text-align:center; border-bottom: 1px solid var(--line); }
+.brand{ font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.02em; text-decoration:none; display:block; margin-bottom: 16px; color: var(--ink); }
+nav.main-nav{ display:flex; gap: 26px; justify-content:center; flex-wrap: wrap; margin-bottom: 14px; }
+nav.main-nav a{ font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; text-decoration:none; color: var(--ink); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: border-color .15s ease; }
+nav.main-nav a:hover, nav.main-nav a.active{ border-color: var(--ink); }
+.social-icons{ display:flex; gap: 16px; justify-content:center; }
+.social-icons a{ color: var(--ink); text-decoration:none; }
+.social-icons svg{ width: 16px; height: 16px; }
+.back-link{ display:block; text-align:center; margin-top: 26px; font-size: 0.85rem; }
+main{ padding: 40px 0 100px; }
+.hero-head{ text-align:center; margin-bottom: 40px; }
+.eyebrow{ font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+h1{ font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 2.7rem); line-height: 1.15; }
+.lede{ margin-top: 18px; color: var(--ink); max-width: 60ch; margin-left:auto; margin-right:auto; font-size: 1.05rem; }
+.overview-photo{ max-width: 420px; margin: 0 auto 50px; }
+.overview-photo img{ width:100%; border-radius: 4px; border: 1px solid var(--line); }
+.overview-photo figcaption{ font-style: italic; font-size: 0.88rem; text-align:center; margin-top: 10px; }
+.section{ padding: 46px 0; border-top: 1px solid var(--line); }
+.section:first-of-type{ border-top: none; }
+.cat-label{
+  display:inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.1em; background: #F2F1ED; color: var(--ink);
+  padding: 5px 12px; margin-bottom: 18px;
+}
+.section h2{ font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin-bottom: 16px; }
+.section h3{ font-family: var(--serif); font-weight: 400; font-size: 1.15rem; margin: 22px 0 10px; }
+.section p{ margin-bottom: 14px; max-width: 68ch; }
+.section p:last-child{ margin-bottom: 0; }
+.section ol, .section ul{ margin: 0 0 14px 1.3em; max-width: 68ch; }
+.section li{ margin-bottom: 8px; }
+figure{ margin: 24px 0; }
+figcaption{ font-style: italic; font-size: 0.88rem; color: var(--ink); margin-top: 10px; }
+.figure-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.figure-row figure{ margin:0; }
+.figure-row-3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.figure-row-3 figure{ margin:0; }
+@media (max-width: 700px){
+  .figure-row, .figure-row-3{ grid-template-columns: 1fr; }
+}
+.placeholder-figure{
+  border: 1px dashed var(--line); border-radius: 4px; padding: 40px 20px; text-align:center;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: #999; background: #FAFAF8;
+}
+footer{ border-top: 1px solid var(--line); padding: 34px 0; }
+.footer-inner{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; }
+.footer-nav{ font-size: 0.82rem; }
+.footer-nav a{ text-decoration:none; color: var(--ink); }
+.footer-nav .sep{ color: var(--line); margin: 0 8px; }
+.footer-bottom{ font-size: 0.78rem; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="index.html">Camila Kaskey — Mechanical Engineering Student</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="social-icons">
+    <a href="https://linkedin.com/in/camila-kaskey-653ba1385" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.75h4V23h-4V8.75zM8.5 8.75h3.83v1.95h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.42c0-1.53-.03-3.5-2.13-3.5-2.14 0-2.47 1.67-2.47 3.39V23h-4V8.75z"/></svg>
+    </a>
+    <a href="mailto:kamilyak@buffalo.edu" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+    </a>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="eyebrow">Woodworking · Audio Electronics · Machine Shop</div>
+      <h1>Functional Bluetooth Subwoofer Speaker</h1>
+      <p class="lede">A hand-built two-way Bluetooth speaker with a custom wooden enclosure, combining a subwoofer and tweeter, a Bluetooth amplifier, and a 3.5mm wired input into a single working audio system.</p>
+    </div>
+  </div>
+
+  <figure class="overview-photo">
+    <img src="speaker_labeled_components_right.jpg" alt="Labeled components of the finished Bluetooth subwoofer speaker">
+    <figcaption>The completed speaker's core components — battery/power source, tweeter, subwoofer, and enclosure.</figcaption>
+  </figure>
+
+  <div class="wrap">
+
+    <div class="section">
+      <span class="cat-label">01 · Project Overview</span>
+      <h2>Overview</h2>
+      <p>This project was a hands-on exploration of audio electronics and woodworking, built between January and May 2025. The goal was to design and assemble a functional two-way Bluetooth speaker from individual components — a subwoofer, a tweeter, a Bluetooth amplifier module, and a 3.5mm wired audio input — housed in a custom-fabricated wooden enclosure.</p>
+      <p>Rather than starting from a kit, I sourced and assembled the electronics myself, and built the enclosure from scratch in the machine shop, cutting, drilling, and sanding the wood to fit the drivers and internal wiring.</p>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">02 · How Speakers Work</span>
+      <h2>Mechanics</h2>
+      <p>Before building, I worked through the underlying physics of how a speaker driver produces sound. A rare-earth magnet sits inside a cap surrounded by aluminum foil, and this magnet generates a magnetic field around itself. A coil of copper wire is wound around this magnet assembly, and when electrical signals from the audio source pass through that coil, they create fluctuations in the surrounding magnetic field.</p>
+      <p>Those fluctuations cause the magnet to move back and forth rapidly. That motion pushes the surrounding air, and the resulting pressure waves are what we hear as sound. In short, the magnetic coil's reaction to the audio signal is directly responsible for the sound waves the speaker produces.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="speaker_mechanics_diagram_1.jpg" alt="Diagram showing the rare earth magnet, cap, and copper coil components">
+          <figcaption>The rare-earth magnet and cap assembly, surrounded by the copper coil and aluminum foil shielding.</figcaption>
+        </figure>
+        <figure>
+          <img src="speaker_mechanics_diagram_2.jpg" alt="Diagram showing how vibrations from the magnet generate sound">
+          <figcaption>Vibrations from the magnet push the surrounding air, generating the sound waves.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">03 · Speaker Assembly</span>
+      <h2>Building the Driver</h2>
+      <p>I built the low-frequency driver's cone and magnet assembly by hand. A rare-earth magnet was placed into a cap, which was then attached to the cone base using superglue to create a secure, rigid bond between the two components. For a second driver, I created an additional cone using layered paper, shaped and reinforced, then colored with sharpie to finish the surface.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="speaker_placing_magnets.jpg" alt="Placing rare earth magnets into the speaker cone">
+          <figcaption>Placing the rare-earth magnet into the cone before final assembly.</figcaption>
+        </figure>
+        <figure>
+          <img src="speaker_attaching_cap_base.jpg" alt="Attaching the cap to the cone base using superglue">
+          <figcaption>Attaching the cap to the base using superglue for a secure bond.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="speaker_cone_sharpie.jpg" alt="A second cone made from layered paper and colored with sharpie">
+        <figcaption>A second cone, built from layered paper and finished with sharpie.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">04 · Enclosure Fabrication</span>
+      <h2>Building the Wooden Enclosure</h2>
+      <p>The enclosure was fabricated in the machine shop from raw wood stock. I measured the subwoofer's inner circumference to accurately cut and fit rubber piping around the driver's edge, which helps seal the enclosure and control how the driver moves. I also cut access holes into the subwoofer housing to route wiring and mount the tweeter and internal electronics.</p>
+      <p>Fabrication involved cutting the enclosure panels to size, drilling mounting holes for the drivers and hardware, and sanding all surfaces smooth before final assembly — giving me hands-on machine shop experience beyond just the electronics side of the build.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="speaker_measuring_circumference.jpg" alt="Measuring the subwoofer's inner circumference to cut rubber piping">
+          <figcaption>Measuring the inner circumference to cut rubber piping to fit the driver.</figcaption>
+        </figure>
+        <figure>
+          <img src="speaker_cutting_access_holes.jpg" alt="Cutting access holes into the subwoofer housing">
+          <figcaption>Cutting access holes into the subwoofer housing for wiring and mounting.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">05 · Electronics &amp; Wiring</span>
+      <h2>Installing the Drivers &amp; Amplifier</h2>
+      <p>With the enclosure and drivers ready, I installed and wired the full electronics chain: the subwoofer and tweeter, a Bluetooth amplifier module, a filter, a copper clad board, and the battery/power source, along with a 3.5mm input for wired playback. The amplifier's volume controls were mounted directly to the enclosure for easy access.</p>
+      <p>Wiring the system required connecting each driver to the amplifier through the appropriate filter components, ensuring the subwoofer and tweeter each received the correct frequency range, and routing the power supply cleanly through the enclosure.</p>
+      <div class="figure-row">
+        <figure>
+          <img src="speaker_labeled_components_left.jpg" alt="Labeled subwoofer spider, copper clad board, and Bluetooth amplifier">
+          <figcaption>The subwoofer spider, copper clad board, filter, and Bluetooth amplifier before final assembly.</figcaption>
+        </figure>
+        <figure>
+          <img src="speaker_labeled_components_right.jpg" alt="Labeled battery, tweeter, subwoofer, and speaker housing">
+          <figcaption>The battery/power source, tweeter, subwoofer, and enclosure ready for final wiring.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="speaker_attaching_bluetooth_unit.jpg" alt="Attaching the Bluetooth amplifier unit with volume controls">
+        <figcaption>Attaching the Bluetooth amplifier unit, with volume controls mounted for easy access.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <span class="cat-label">06 · Testing &amp; Results</span>
+      <h2>Testing &amp; Results</h2>
+      <p>Once assembled, I tested the speaker using both the 3.5mm wired input and Bluetooth wireless playback to confirm the amplifier, drivers, and wiring all worked correctly together. Both playback modes produced clear audio output, validating the full electronics chain from the power source through the amplifier and into the subwoofer and tweeter.</p>
+      <p>Building this project end-to-end — from understanding the underlying physics of how a driver produces sound, to fabricating the enclosure, to wiring the final electronics — gave me a much more complete picture of how consumer audio products are actually built, beyond just using them.</p>
+    </div>
+
+    <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-nav">
+      <a href="index.html">Home</a><span class="sep">|</span>
+      <a href="portfolio.html">Portfolio</a><span class="sep">|</span>
+      <a href="resume.html">Resume</a><span class="sep">|</span>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-bottom">© 2026 Camila Kaskey</div>
+  </div>
+</footer>
+
+</body>
+</html>
