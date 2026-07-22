@@ -113,7 +113,7 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="hero-head">
       <div class="eyebrow">Arduino · Mechatronics · 3D Printing</div>
       <h1>Automated Hamburger Flipper: Detection, Probing &amp; Flipping System</h1>
-      <p class="lede">An independent engineering project built for Theta Tau's pledge process — a gantry-style machine that mounts over a grill, locates a patty using a laser sensor array, probes its internal temperature, and flips it automatically onto a plate.</p>
+      <p class="lede">An engineering project built for Theta Tau's pledge process — a gantry-style machine that mounts over a grill, locates a patty using a laser sensor array, probes its internal temperature, and flips it automatically onto a plate.</p>
     </div>
   </div>
 
@@ -127,16 +127,17 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">01 · Project Overview</span>
       <h2>Overview</h2>
-      <p>The Automated Hamburger Flipper was an independent project I designed and built between January and May 2025 as part of Theta Tau's pledge process, where I served as President of my pledge class. I led our 13-member class through several interdisciplinary engineering builds during that semester, and this project was my own contribution: a machine that mounts directly on top of a grill, locates a patty using an array of laser sensors, drives a temperature probe into the meat to monitor doneness, and uses a rotating spatula to flip the patty and eventually lift it off onto a plate.</p>
-      <p>The system combines mechanical design, embedded control, and sensor integration — Arduino-driven motor sequencing, 3D-printed structural components, and a threaded-rod drive system — into a single machine that had to operate reliably above an active heat source.</p>
+      <p>The Automated Hamburger Flipper was a team project completed during Spring 2025 as part of Theta Tau's pledge process. As Pledge Class President, I coordinated my team's progress, organized weekly work, contributed to design discussions, and helped fabricate and assemble the prototype alongside my teammates.</p>
+      <p>Our goal was to build an automated system that could locate a hamburger patty on a grill, monitor its internal temperature, flip it during cooking, and transfer it onto a plate once it was fully cooked. The final design combined mechanical components, sensors, Arduino-based control, and automated motion in a gantry-mounted system.</p>
     </div>
 
     <div class="section">
       <span class="cat-label">02 · Concept &amp; Detection Strategy</span>
       <h2>Design Concept</h2>
-      <p>The core design challenge was locating a patty on the grill without any prior knowledge of its exact position, then reaching it with a probe and a spatula without interfering with the cooking surface. I settled on a gantry frame that spans the grill on four printed and metal rails, two per side, running along the perimeter. A pair of DC gearmotors drives lead screws along the X-axis, while a second pair drives the Y-axis, letting the carriage assembly reach any point over the circular cooking area.</p>
-      <p>Patty detection relies on a laser sensor array mounted along the X-axis rails, with each laser paired to a receiver roughly an inch apart from its neighbor. Each beam is assigned a position variable in inches. When a beam is interrupted — meaning the patty is blocking it from reaching its receiver — that beam's assigned position tells the X-axis motor where to stop and enter the grill along that column.</p>
-      <p>Once positioned in X, the probe carriage moves along its Y-axis screw and keeps advancing until it detects a sharp temperature change, which indicates it has reached the edge of the patty rather than the open grill surface. That transition is the cue for the Y-axis motor to stop advancing and hold the probe in place to begin reading internal temperature.</p>
+      <p>One of the main design challenges was locating a patty anywhere on the grill without using cameras or manual positioning. Our team designed a gantry-style system mounted above the grill that allowed both the temperature probe and spatula to move independently across the cooking surface.</p>
+      <p>A laser sensor array determined the patty's X-position. Each laser corresponded to a fixed location on the grill. When a beam was interrupted, the carriage moved to the matching position.</p>
+      <p>Once aligned, the temperature probe advanced along the Y-axis until it detected a sudden increase in temperature, indicating that it had reached the patty rather than the grill surface. The probe remained in place until the target temperature was reached, then retracted so the spatula could perform the flipping sequence.</p>
+      <p>Using laser sensors instead of a camera simplified the design while still providing reliable positioning.</p>
       <div class="figure-row">
         <figure>
           <img src="burger_flipper_xdetection_diagram.png" alt="Diagram of the laser sensor array used for patty X-position detection">
@@ -152,8 +153,9 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">03 · CAD Development</span>
       <h2>CAD Development</h2>
-      <p>I modeled the full gantry assembly in SolidWorks before building anything physically, which let me check rail spacing, carriage clearance, and range of motion across the full diameter of the grill before committing to a build. The model included the rail assemblies, the vertical carriage tower, the threaded-rod drive on the probe axis, and the spatula end-effector.</p>
-      <p>Two components got the most individual design attention: the rails and the spatula. Each rail was modeled as a 24-inch extruded channel with a rounded profile to house the drive rods and support the linear bearings; four of them run in pairs along each side of the grill. The spatula was designed as an L-shaped profile that spans the grill width, with a mounting hole at the bend that lets a motor rotate it to perform the actual flip.</p>
+      <p>Before fabrication, our team modeled the complete system in SolidWorks to verify the layout and make sure every moving component had enough clearance to operate across the grill.</p>
+      <p>The assembly included the gantry frame, rail system, carriage mechanisms, threaded rod drives, rotating spatula, and temperature probe assembly. Building the full CAD model helped identify potential interference before manufacturing began.</p>
+      <p>Components such as the rails and spatula were modeled individually before being integrated into the complete assembly.</p>
       <div class="figure-row">
         <figure>
           <img src="burger_flipper_gantry_cad.png" alt="SolidWorks render of the full gantry assembly">
@@ -190,6 +192,10 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
         <figcaption>The gantry mid-assembly, with rails, carriages, and drive motors installed above the grill cutout.</figcaption>
       </figure>
     </div>
+    <figure>
+  <img src="burger_flipper_wiring_assembly.jpg" alt="Final wiring assembly for the hamburger flipper electronics">
+  <figcaption>Final wiring for the Arduino, motor drivers, and sensors before assembly.</figcaption>
+</figure>
 
     <div class="section">
       <span class="cat-label">05 · Sensing &amp; Control</span>
