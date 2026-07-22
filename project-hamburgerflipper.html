@@ -175,8 +175,9 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">04 · Mechanical Build</span>
       <h2>Fabrication &amp; Assembly</h2>
-      <p>The frame is built from plywood with a circular cutout sized to sit directly over the grill's cooking surface, reinforced with aluminum brackets at the rail mounts. I used skateboard-style bearings for the linear carriages riding along the threaded rods, since they were inexpensive, easy to source, and rigid enough for the loads involved. 3D-printed components handled the carriage blocks, motor mounts, and rail end caps, which let me iterate on fit quickly instead of machining new brackets for every adjustment.</p>
-      <p>Each axis is driven by a DC gearmotor turning a threaded rod, converting rotation into linear carriage motion. Getting consistent thread engagement across the full 24-inch rail span took some tuning — small misalignments between the rail and the rod caused binding, which I solved by loosening tolerances slightly at the printed carriage interfaces and confirming smooth travel across the whole range before mounting the frame permanently over the grill.</p>
+      <p>After the design was finalized, our team built the prototype using both custom-made and off-the-shelf components. The system was mounted above the grill on a rigid frame that supported the rail assemblies and moving carriages.</p>
+      <p>I worked in the machine shop cutting, sanding, and preparing parts before assembly. Being involved in the fabrication process gave me hands-on experience with manufacturing, part fitment, and mechanical assembly.</p>
+      <p>During assembly, several adjustments were made to improve component alignment and reduce resistance in the moving mechanisms, allowing the probe and spatula to travel more smoothly across the rail system.</p>
       <div class="figure-row">
         <figure>
           <img src="burger_flipper_threaded_rod.jpg" alt="Threaded rod carriage assembly for one drive axis">
@@ -200,8 +201,8 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">05 · Sensing &amp; Control</span>
       <h2>Sensing &amp; Temperature Monitoring</h2>
-      <p>Temperature sensing uses a DS18B20 waterproof digital probe, chosen for its wide range (-55°C to 125°C) and native compatibility with Arduino. Once the probe is inserted into the patty, it holds position and continuously reads temperature until the patty reaches 160°F, the standard safe internal temperature for ground beef, at which point the control logic retracts the probe out of the way of the spatula.</p>
-      <figure>
+      <p>The system uses two sensing methods throughout the cooking process. A laser sensor array determines the patty's X-position by detecting which beam has been interrupted, allowing the carriage to move to the correct location. A DS18B20 waterproof digital temperature probe then monitors the patty's internal temperature. The sensor operates over a range of -55°C to 125°C and interfaces directly with the Arduino controller. Once inserted into the patty, it continuously measures the internal temperature until it reaches 160°F, at which point the control system retracts the probe to clear the path for the rotating spatula before the flipping sequence begins.</p>
+        <figure>
         <div class="placeholder-figure">Photo: probe wired into the gantry assembly<br>— add image here —</div>
         <figcaption>The DS18B20 temperature probe, wired for Arduino input.</figcaption>
       </figure>
@@ -212,23 +213,31 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
       <h2>How It Operates</h2>
       <p>The full sequence, programmed in Arduino, runs as follows:</p>
       <ol>
-        <li>The laser sensor array detects the patty at a specific beam position along the X-axis.</li>
-        <li>The retracted probe moves along the Y-axis to that same X position, staying off to the side of the grill.</li>
-        <li>The spatula travels along its own rail to the same detected location.</li>
-        <li>The probe advances inward across the grill until it senses a sharp temperature change, indicating it has been inserted into the patty.</li>
-        <li>The probe holds position, monitoring temperature until the patty reaches 160°F.</li>
-        <li>The probe retracts to its home position, clearing the path for the spatula.</li>
-        <li>The spatula rotates, flipping the patty.</li>
-        <li>The probe reinserts into the patty to continue monitoring the second side.</li>
-        <li>Once the second side is done, the spatula performs a second flip — this time lifting the patty off the grill entirely and depositing it onto a plate.</li>
-      </ol>
+        <li>The laser sensor array detects the patty's position along the X-axis by identifying which beam has been interrupted.</li>
+
+<li>The retracted temperature probe moves to the corresponding X-position while remaining clear of the grill.</li>
+
+<li>The spatula travels along its own rail to the same location.</li>
+
+<li>The probe advances across the grill along the Y-axis until it detects a sharp increase in temperature, indicating it has entered the patty.</li>
+
+<li>The probe remains in place while continuously monitoring the internal temperature until the patty reaches 160°F.</li>
+
+<li>The probe retracts to its home position, clearing the path for the spatula.</li>
+
+<li>The spatula rotates and flips the patty.</li>
+
+<li>The probe reinserts into the patty to monitor the second side.</li>
+
+<li>Once the second side reaches the target temperature, the spatula performs a final rotation, lifting the patty from the grill and placing it onto a plate.</li>
+        </ol>
     </div>
 
     <div class="section">
       <span class="cat-label">07 · Testing &amp; Results</span>
       <h2>Testing &amp; Results</h2>
-      <p>After assembly, I tested the full sequence on the physical rig mounted over the grill: patty detection, probe insertion, temperature-triggered retraction, and the spatula flip. The system successfully detected a patty, drove the probe to insertion, and executed a flip in testing, validating the core mechanical and control approach end to end.</p>
-      <p>Getting there took iteration on both the mechanical and software sides — tuning motor timing and drive-rod tolerances so the carriages tracked accurately, and adjusting the temperature-change threshold used to detect probe insertion so it reliably distinguished the patty from the open grill surface.</p>
+      <p>Each subsystem was tested individually before the full system was assembled. This included checking carriage movement, verifying the laser detection concept, testing probe positioning, and confirming the spatula's range of motion.</p>
+      <p>Testing also showed that some mechanical adjustments were needed to improve alignment and reduce friction in the moving components. After making these changes, the system operated more consistently and demonstrated that the overall concept could successfully combine sensing, motion, and temperature monitoring.</p>
       <div class="figure-row">
         <figure>
           <img src="burger_flipper_rail_detail.jpg" alt="Detail view of a completed rail and carriage assembly">
@@ -244,8 +253,9 @@ footer{ border-top: 1px solid var(--line); padding: 34px 0; }
     <div class="section">
       <span class="cat-label">08 · Results &amp; Lessons Learned</span>
       <h2>Results &amp; Lessons Learned</h2>
-      <p>This project pushed me to combine mechanical design, sensing, and embedded control into one working system, rather than treating them as separate problems. The laser-array detection approach turned out to be a reliable, low-cost way to localize an object without vision processing, and the thermal-gradient method for probe insertion solved patty-edge detection without needing a separate proximity sensor on that axis.</p>
-      <p>Running this alongside leading my pledge class also meant balancing hands-on fabrication time with the coordination, scheduling, and presentation work that came with the President role — twice-weekly technical progress presentations kept the build honest and on schedule, and ultimately every member of our 13-person pledge class completed the program on time.</p>
+      <p>This project gave me experience working on a system that combined mechanical design, sensors, electronics, and automation. It also showed me how closely different subsystems depend on one another for the entire machine to work properly.</p>
+      <p>As Pledge Class President, I learned how to organize a team, keep projects moving, and communicate progress throughout development. I also gained hands-on experience in the machine shop by fabricating parts and helping assemble the prototype.</p>
+      <p>Building the project from CAD models to a working prototype showed me how design, manufacturing, and assembly influence one another, and how small changes during fabrication can affect the performance of the final system.</p>
     </div>
 
     <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
